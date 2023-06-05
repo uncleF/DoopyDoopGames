@@ -66,6 +66,8 @@ a {
 
 .logo {
   display: block;
+  width: 50wv;
+  max-width: 469px;
   margin: 0 0 2em;
 }
 
