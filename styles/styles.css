@@ -93,3 +93,9 @@ a {
 .legal-text {
   padding: 0 0 4em
 }
+
+.support-text {
+  width: 75vw;
+  max-width: 40rem;
+  font-size: 1.5em
+}
