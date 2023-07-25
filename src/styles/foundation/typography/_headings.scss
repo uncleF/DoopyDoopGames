@@ -1,0 +1,23 @@
+%heading {
+  page-break-after: avoid;
+  break-after: avoid;
+  orphans: 3;
+  widows: 3;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+h1 {
+  @extend %heading;
+  @extend %heading-h1 !optional;
+  font-size: 3.5rem;
+  margin: 1.5em 0 1rem;
+}
+
+h2 {
+  @extend %heading;
+  @extend %heading-h2 !optional;
+  font-size: 2rem;
+  margin: 1.5em 0 1rem;
+}

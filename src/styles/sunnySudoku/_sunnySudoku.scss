@@ -1,0 +1,40 @@
+.sunnySudoku {
+  @extend %section !optional;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: center;
+  color: #fff;
+  background: #42ae6d;
+  padding: 80px calc(70% - 80px) 80px 80px;
+
+  &::before {
+    position: relative;
+    content: "";
+    display: block;
+    width: 100%;
+    margin: 0 0 1em 5em;
+  }
+
+  & %heading-h1 {
+    order: -1;
+    width: 1%;
+    margin: 0;
+  }
+
+  & %paragraph {
+    width: 100%;
+    min-width: 25rem;
+  }
+
+  & %link {
+    color: #fff;
+  }
+}
+
+.sunnySudokuIcon {
+  order: -2;
+  width: 130px;
+  height: 130px;
+  margin: 0 2rem 0 0;
+}
