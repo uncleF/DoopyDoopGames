@@ -1,24 +1,14 @@
 <script lang="ts">
-  import { AppPlatforms } from "types/App";
-	import Stores from "components/Stores/Stores.svelte";
-
-  const stores = [
-    {
-      store: AppPlatforms.Apple,
-      href: "https://apps.apple.com/us/app/sunny-sudoku/id6450133977"
-    },
-    {
-      store: AppPlatforms.Google,
-      href: "https://play.google.com/store/apps/details?id=com.doopydoop.sudoku"
-    },
-  ]
+  import sunnySudoku from 'data/projects/sunny-sudoku.json';
+	import Stores from 'components/Stores/Stores.svelte';
 </script>
-<section class="sunnySudoku">
+
+<section id="sunnySudoku" class="sunnySudoku">
   <h1>Sunny Sudoku</h1>
-  <img src="/images/sunnySudokuIcon.png" alt="Sunny Sudoku" class="sunnySudokuIcon">
-  <p>Welcome to "Sunny Sudoku," a delightful mobile game that provides a relaxing distraction on a sunny summer day. Immerse yourself in a world of tranquil Sudoku challenges and engage your mind while enjoying the warmth of the sun.</p>
+  <img src="/images/sunnySudoku/sunnySudokuIcon.png" alt="Sunny Sudoku" class="sunnySudokuIcon">
+  <p>Welcome to Sunny Sudoku, a delightful mobile game that provides a relaxing distraction on a sunny summer day. Immerse yourself in a world of tranquil Sudoku challenges and engage your mind while enjoying the warmth of the sun.</p>
   <Stores
     name="Sunny Sudoku"
-    slug="sunny-sudoku"
-    {stores} />
+    slug={sunnySudoku.slug}
+    stores={sunnySudoku.stores} />
 </section>

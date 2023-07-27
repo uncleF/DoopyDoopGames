@@ -3,10 +3,10 @@
 
   export let name: string;
   export let slug: string;
-  export let stores: AppStore[];
+  export let stores: ProjectStores;
 </script>
 
-{#each stores as { store, href }}
+{#each Object.entries(stores) as [store, { href }] }
   <Store
     {name}
     {store}

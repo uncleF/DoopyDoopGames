@@ -1,17 +1,17 @@
 {
   "stores": {
     "apple": {
-      "linkClassSuffix": "AppStore",
+      "classSuffix": "appStore",
       "linkText": "Download on the App Store",
       "legalLinkText": "in App Store"
     },
     "google": {
-      "linkClassSuffix": "GooglePlay",
+      "classSuffix": "googlePlay",
       "linkText": "Get on Google Play",
       "legalLinkText": "on Google Play"
     },
     "amazon": {
-      "linkClassSuffix": "AmazonAppstore",
+      "classSuffix": "amazonAppstore",
       "linkText": "Get on Amazon Appstore",
       "legalLinkText": "in Amazon Appstore"
     }

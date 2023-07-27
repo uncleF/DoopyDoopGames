@@ -12,6 +12,7 @@ export default defineConfig({
       styles: path.resolve('./src/styles'),
       components: path.resolve('./src/components'),
       config: path.resolve('./src/config'),
+      data: path.resolve('./src/data'),
       routes: path.resolve('./src/routes'),
       state: path.resolve('./src/state'),
       utilities: path.resolve('./src/utilities'),

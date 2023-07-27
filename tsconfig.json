@@ -15,6 +15,7 @@
       "$lib/*": ["src/lib/*"],
       "components/*": ["src/components/*"],
       "config/*": ["src/config/*"],
+			"data/*": ["src/data/*"],
       "routes/*": ["src/routes/*"],
       "state/*": ["src/state/*"],
       "utilities/*": ["src/utilities/*"],

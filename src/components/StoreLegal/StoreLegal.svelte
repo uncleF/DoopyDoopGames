@@ -1,17 +1,20 @@
 <script lang="ts">
-  import appConfig from 'config/appConfig.json';
+  import config from 'config/config.json';
 
-  export let store: AppPlatforms;
+  export let store: ProjectPlatforms;
   export let slug: string;
 
-  const text = appConfig.stores[store].legalLinkText;
+  const text = config.stores[store].legalLinkText;
 </script>
 
 <ul class="storeLegal">
   <li>
-    <a href={`/${slug}/legal/${store}/privacy-policy.html`}>Privacy Policy {text}</a>
+    <a href={`/${slug}/legal/${store}/privacy-policy`}>Privacy Policy {text}</a>
   </li>
   <li>
-    <a href={`/${slug}/legal/${store}/terms-and-conditions.html`}>Terms and Conditions {text}</a>
-  </li>  
+    <a href={`/${slug}/legal/${store}/terms-and-conditions`}>Terms and Conditions {text}</a>
+  </li>
+  <li>
+    <a href="/sunny-sudoku/support">Sunny Sudoku User Support</a>
+  </li>
 </ul>

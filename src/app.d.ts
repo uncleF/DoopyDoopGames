@@ -10,3 +10,16 @@ declare global {
 }
 
 export {};
+
+  type AppStores = AppStore[];
+
+  type AppStore = {
+    store: AppPlatforms;
+    href: string;
+  }
+
+  enum AppPlatforms {
+    Apple = 'apple',
+    Google = 'google',
+    Amazon = 'amazon',
+  }

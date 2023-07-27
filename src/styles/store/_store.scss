@@ -1,38 +1,42 @@
-.appStore,
-.googlePlay {
+.store {
   width: 100%;
-  margin: 1rem 0 0.75em;
+  margin: 2em 0 0;
+
+  %device-android &-appStore {
+      display: none;
+    }
+  
+  %device-ios &-googlePlay {
+    display: none;
+  }
 }
 
-.appStoreLink {
+.storeLink {
   position: relative;
   display: block;
   overflow: hidden;
   width: 282px;
   height: 0;
-  padding: 94px 0 0;
-  background: url('/images/appStore.png') no-repeat center center;
   background-size: contain;
+
+  &-appStore {
+    padding: 94px 0 0;
+    background-image: url('/images/appStore.png');
+  }
+
+  &-googlePlay {
+    padding: 84px 0 0;
+    background-image: url('/images/googlePlay.png');
+  }
 }
 
-.googlePlayLink {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  width: 282px;
-  height: 0;
-  padding: 84px 0 0;
-  background: url('/images/googlePlay.png') no-repeat center center;
-  background-size: contain;
-}
-
-.legal {
+.storeLegal {
   font-size: 0.85em;
   padding: 0;
-  margin: 1em 0 1.5em 1em;
+  margin: 1em 0 0 1.5em;
   white-space: nowrap;
-}
 
-.legal li {
-  margin: 0.75em 0;
+  li {
+    margin: 0.75em 0;
+  }
 }
