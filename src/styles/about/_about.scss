@@ -1,0 +1,14 @@
+.about {
+  @extend %section !optional;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  display: block;
+  width: 40%;
+  max-width: 469px;
+  margin: 2rem 0 0;
+}

@@ -1,0 +1,35 @@
+.navigation {
+  display: flex;
+  gap: 0.5em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.navigationLink {
+  position: relative;
+  display: block;
+  padding: 0.75em;
+  text-decoration: none;
+
+  &::before {
+    position: absolute;
+    content: '';
+    right: 0.75em;
+    bottom: 0.5em;
+    left: 0.75em;
+    display: block;
+    height: 4px;
+    border-radius: 2px;
+    background: #ffce4f;
+    transition: all 0.25s ease-in-out;
+    pointer-events: none;
+  }
+
+  &:hover,
+  &-is-active {
+    &::before {
+      opacity: 0;
+      transform: translateY(0.35em);
+    }
+  }
+}

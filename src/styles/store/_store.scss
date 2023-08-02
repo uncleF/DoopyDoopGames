@@ -1,0 +1,42 @@
+.store {
+  width: 100%;
+  margin: 2em 0 0;
+
+  %device-android &-appStore {
+      display: none;
+    }
+  
+  %device-ios &-googlePlay {
+    display: none;
+  }
+}
+
+.storeLink {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 282px;
+  height: 0;
+  background-size: contain;
+
+  &-appStore {
+    padding: 94px 0 0;
+    background-image: url('/images/appStore.png');
+  }
+
+  &-googlePlay {
+    padding: 84px 0 0;
+    background-image: url('/images/googlePlay.png');
+  }
+}
+
+.storeLegal {
+  font-size: 0.85em;
+  padding: 0;
+  margin: 1em 0 0 1.5em;
+  white-space: nowrap;
+
+  li {
+    margin: 0.75em 0;
+  }
+}
