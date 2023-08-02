@@ -7,7 +7,7 @@ import * as htmlMinifier from 'html-minifier';
 
 function removeAppFolder() {
   return new Promise((resolve, reject) => {
-    rimraf('./docs/_app', (err) => {
+    rimraf('./build/_app', (err) => {
       if (err) {
         reject(err);
       } else {
@@ -22,17 +22,17 @@ function buildSass() {
     sass.render(
 			{
 				file: './src/styles/styles.scss',
-				outFile: './docs/styles.css',
+				outFile: './build/styles.css',
         outputStyle: 'compressed'
 			},
 			(err, result) => {
 				if (err) {
 					reject(err);
 				} else {
-          if (!fs.existsSync('./docs/css/')) {
-						fs.mkdirSync('./docs/css/', { recursive: true });
+          if (!fs.existsSync('./build/css/')) {
+						fs.mkdirSync('./build/css/', { recursive: true });
 					}
-          const writeableStream = fs.createWriteStream('./docs/css/styles.css');
+          const writeableStream = fs.createWriteStream('./build/css/styles.css');
           writeableStream.write(result.css);
           resolve();
 				}
@@ -42,7 +42,7 @@ function buildSass() {
 }
 
 function processHTMLFiles() {
-  const htmlFiles = findHTMLFiles('./docs');
+  const htmlFiles = findHTMLFiles('./build');
   return Promise.all(htmlFiles.map(processHTMLFile));
 }
 
@@ -100,7 +100,7 @@ function findHTMLFiles(dirPath, arrayOfFiles) {
 }
 
 function compressFiles() {
-  const files = findCompressableFiles('./docs');
+  const files = findCompressableFiles('./build');
     return Promise.all(files.map(compressFile));
 }
 
