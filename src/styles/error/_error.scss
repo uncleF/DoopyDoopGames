@@ -1,0 +1,9 @@
+.error {
+  @extend %section !optional;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 75vw;
+  max-width: 40rem;
+  font-size: 1.5em
+}
