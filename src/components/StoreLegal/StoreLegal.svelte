@@ -15,6 +15,6 @@
     <a href={`/${slug}/legal/${store}/terms-and-conditions`}>Terms and Conditions {text}</a>
   </li>
   <li>
-    <a href="/sunny-sudoku/support">Sunny Sudoku User Support</a>
+    <a href={`/${slug}/support`}>Sunny Sudoku User Support</a>
   </li>
 </ul>

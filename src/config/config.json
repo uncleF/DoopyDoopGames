@@ -3,7 +3,7 @@
     "apple": {
       "classSuffix": "appStore",
       "linkText": "Download on the App Store",
-      "legalLinkText": "in App Store"
+      "legalLinkText": "on the App Store"
     },
     "google": {
       "classSuffix": "googlePlay",
@@ -13,7 +13,7 @@
     "amazon": {
       "classSuffix": "amazonAppstore",
       "linkText": "Get on Amazon Appstore",
-      "legalLinkText": "in Amazon Appstore"
+      "legalLinkText": "on the Amazon Appstore"
     }
   }
 }
