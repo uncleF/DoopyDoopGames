@@ -1,5 +1,12 @@
 .legal {
   width: 75vw;
   max-width: 40rem;
-  padding: 0 0 4em
+  padding: 0 0 4em;
+
+  @include txmx-media('phone')
+  {
+    width: auto;
+    max-width: auto;
+    padding: 0 $txgl-gap-small 2em;
+  }
 }

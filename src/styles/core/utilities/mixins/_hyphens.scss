@@ -1,0 +1,6 @@
+/* Set hyphens Property*/
+
+@mixin txmx-hyphens($hyphens: manual) {
+  -epub-hyphens: $hyphens;
+  hyphens: $hyphens;
+}

@@ -1,0 +1,49 @@
+$txgl-baseWidth: 1200px;
+
+$txgl-layers: (
+  over: 200,
+  top: 100,
+  content: 50,
+  bottom: 0,
+  under: -1,
+);
+
+$txgl-transition-default: 200ms;
+$txgl-transition-fast: 75ms;
+$txgl-transition-medium: 300ms;
+$txgl-transition-slow: 400ms;
+$txgl-transition-slowest: 500ms;
+
+$txgl-transition: $txgl-transition-default;
+
+$txgl-text: $txgl-white;
+$txgl-background: $txgl-black;
+
+$txgl-text-print: $txgl-black-900;
+$txgl-background-print: $txgl-white;
+
+$txgl-link: $txgl-blue;
+$txgl-visited: $txgl-blue;
+$txgl-hover: $txgl-blue;
+$txgl-active: $txgl-blue;
+
+$txgl-tap: rgba($txgl-active, 0.35);
+
+$txgl-ui-focus-color: $txgl-black;
+$txgl-ui-disabled-color: $txgl-gray;
+$txgl-ui-valid-color: $txgl-green;
+$txgl-ui-invalid-color: $txgl-red;
+$txgl-ui-placeholder-color: $txgl-gray;
+$txgl-ui-selection-color: $txgl-black-500;
+$txgl-ui-selection-background: $txgl-white;
+
+$txgl-form-height: 50px;
+$txgl-form-borderWidth: 2px;
+$txgl-form-borderColor: $txgl-blue;
+$txgl-form-borderRadius: 14px;
+$txgl-form-sidePadding: 10px;
+$txgl-form-fontSize: 16px;
+
+$txgl-button-height: 40px;
+$txgl-button-padding: 10px;
+$txgl-button-borderRadius: 10px;

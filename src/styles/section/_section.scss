@@ -5,7 +5,7 @@
   height: 100%;
   height: calc(100% - 5px);
 
-  &:first-child:last-child {
-    height: 100%;
+  @include txmx-media('phone') {
+    height: auto;
   }
 }

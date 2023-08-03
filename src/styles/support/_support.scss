@@ -5,5 +5,16 @@
   justify-content: center;
   width: 75vw;
   max-width: 40rem;
-  font-size: 1.5em
+  font-size: 1.5rem;
+
+  @include txmx-media('phone') {
+    width: auto;
+    max-width: none;
+    padding: 0 $txgl-gap-small 2rem;
+    font-size: 1rem;
+    
+    &:first-child {
+      flex-grow: 1;
+    }
+  }
 }

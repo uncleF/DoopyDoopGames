@@ -11,4 +11,10 @@
   width: 40%;
   max-width: 469px;
   margin: 2rem 0 0;
+
+  @include txmx-media('phone') {
+    width: 60%;
+    max-width: 300px;
+    margin: 0;
+  }
 }

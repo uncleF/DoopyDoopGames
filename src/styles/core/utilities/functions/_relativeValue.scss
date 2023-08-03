@@ -1,0 +1,17 @@
+// Relative Unit Multiplier
+
+@use 'sass:math';
+
+@function txf-relativeValueMultiplier($unit) {
+  @if ($unit == 'vw') or ($unit == 'vh') or ($unit == '%') {
+    @return 100;
+  } @else {
+    @return 1;
+  }
+}
+
+// Convert to Relative Value
+
+@function txf-relativeValue($value, $base: $txgl-baseWidth, $unit: '%') {
+  @return #{math.div($value, $base) * txf-relativeValueMultiplier($unit)}#{$unit};
+}

@@ -1,0 +1,12 @@
+@mixin txmx-fluid-typography($min-vw, $max-vw, $txmx-fontSize-min, $txmx-fontSize-max, $txmx-fontSize-fallback) {
+  font-size: $txmx-fontSize-fallback;
+  font-size: calc(#{$txmx-fontSize-min} + #{txf-stripUnit($txmx-fontSize-max - $txmx-fontSize-min)} * ((100vw - #{$min-vw}) / #{txf-stripUnit($max-vw - $min-vw)}));
+
+  @include txmx-media(max) {
+    font-size: $txmx-fontSize-min;
+  }
+
+  @include txmx-media(phone) {
+    font-size: $txmx-fontSize-max;
+  }
+}

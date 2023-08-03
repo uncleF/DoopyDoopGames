@@ -1,0 +1,14 @@
+// Set font-size Property
+
+@mixin txmx-fontSize($newFontSize, $baseFontSize: $txgl-fontSize, $fallback: false) {
+  $size: 0;
+  @if type-of($newFontSize) == number {
+    $size: $newFontSize;
+  } @else {
+    $size: map-get($txgl-fontSizes, $newFontSize);
+  }
+  @if $fallback == true {
+    font-size: $size;
+  }
+  font-size: txf-relativeValue($size, $baseFontSize, 'rem');
+}
