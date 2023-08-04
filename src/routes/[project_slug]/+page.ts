@@ -1,21 +1,20 @@
 import type { LoadEvent } from "@sveltejs/kit"
-import sunnySudoku from 'data/projects/sunny-sudoku.json';
+import projects from 'data/projects.json';
 
 /** @type {import('./$types').EntryGenerator} */
 export function entries() {
-    return [
-        { project_slug: sunnySudoku.slug }
-    ];
+    return Object.keys(projects).map((project_slug) => ({ project_slug }));
 }
 
 export async function load({ params }: LoadEvent) {
-  const slug = params.project_slug;
-  let project: Project | null = null;
-  if (slug == sunnySudoku.slug) {
-    project = sunnySudoku;
+  const { project_slug: slug } = params;
+  if (!slug) {
+    throw new Error("No slug provided");
+  }
+  if (!projects[slug]) {
+    throw new Error("Project not found.");
   }
   return {
-    slug: slug,
-    name: project?.name ?? 'Project not found',
-  }
+    slug,
+  };
 }

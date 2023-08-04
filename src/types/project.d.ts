@@ -1,23 +1,17 @@
-type ProjectNames = 'sunnySudoku';
-type ProjectSlugs = 'sunny-sudoku';
-type ProjectPlatforms = 'apple' | 'google' | 'amazon';
+type ProjectName = 'Sunny Sudoku' | "Band Rush";
+type ProjectSlug = 'sunny-sudoku' | 'band-rush';
+type ProjectPlatform = 'apple' | 'google' | 'amazon';
 
 type ProjectStore = {
   href: string;
-  privacyPolicy: string;
-  termsOfService: string;
+  "privacy-policy": string;
+  "terms-and-conditions": string;
 }
 
-type ProjectStores = Partial<Record<ProjectPlatforms, ProjectStore>>;
-
-type Project = {
-  name: ProjectNames,
-  slug: ProjectSlugs,
-  support: string,
-  stores: ProjectStores
+type ProjectStoreConfig = {
+  classSuffix: string,
+  linkText: string,
+  legalLinkText: string
 }
 
-declare module "data/projects/sunny-sudoku.json" {
-  const value: Project;
-  export default value;
-}
+type ProjectStores = Partial<Record<ProjectPlatform, ProjectStore>>;

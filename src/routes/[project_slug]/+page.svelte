@@ -1,15 +1,14 @@
 <script lang='ts'>
-  import Error from "components/Error/Error.svelte";
-  import SunnySudoku from "components/SunnySudoku/SunnySudoku.svelte";
+  import projects from 'data/projects.json';
+  import Project from 'components/Project/Project.svelte';
 
-  export let data: { slug: string, name: string };
+  export let data: { slug: ProjectSlug };
+
+  const { slug } = data;
+  const project = projects[slug];
 </script>
 
-{#if data.slug === 'sunny-sudoku'}
-  <SunnySudoku />
-{:else}
-  <Error code={404} text="Project not found." />
-{/if}
+<Project {slug} />
 <svelte:head>
-  <title>{data.name}</title>
+  <title>{project.name}</title>
 </svelte:head>

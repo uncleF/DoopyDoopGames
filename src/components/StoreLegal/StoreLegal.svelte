@@ -1,10 +1,10 @@
 <script lang="ts">
-  import config from 'config/config.json';
+  import shared from 'data/shared.json';
 
-  export let store: ProjectPlatforms;
   export let slug: string;
+  export let store: ProjectPlatform;
 
-  const text = config.stores[store].legalLinkText;
+  const text = shared.stores[store].legalLinkText;
 </script>
 
 <ul class="storeLegal">
