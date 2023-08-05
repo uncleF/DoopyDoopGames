@@ -18,6 +18,16 @@
 			} else if (navigator.userAgent.match(/android/i)) {
 				document.documentElement.classList.add('device-android');
 			}
+
+			window.addEventListener('scroll', onScroll)
+
+			function onScroll() {
+				requestAnimationFrame(updateScroll);
+			}
+
+			function updateScroll() {
+				document.documentElement.classList.toggle('app-is-scrolled', window.scrollY > 30);
+			}
 		</script>
 		%sveltekit.head%
 	</head>

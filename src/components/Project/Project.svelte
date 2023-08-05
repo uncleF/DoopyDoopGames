@@ -1,20 +1,22 @@
 <script lang="ts">
-  import projects from 'data/projects.json';
-  import { transformProjectNameToClassNameComponent } from 'utilities/project';
+  import { transformNameToClassNameComponent } from 'utilities/helpers';
   import Stores from 'components/Stores/Stores.svelte';
 
   export let slug: ProjectSlug;
-
-  const project = projects[slug];
-  const className = `${transformProjectNameToClassNameComponent(project.name)}Project`;
+  export let project: Project;
+  
+  const { description, icon, name, playURL, stores } = project;
+  const className = `${transformNameToClassNameComponent(name)}Project`;
 </script>
 
 <section id={slug} class={className}>
-  <h1>{project.name}</h1>
-  <img src={project.icon} alt={project.name} class="projectIcon">
-  <p>{project.description}</p>
-  <Stores
-    name={project.name}
-    slug={slug}
-    stores={project.stores} />
+  <h1>{name}</h1>
+  <img src={icon} alt={name} class="projectIcon">
+  <p>{description}</p>
+  {#if stores}
+    <Stores
+      {slug}
+      {name}
+      {stores} />
+  {/if}
 </section>

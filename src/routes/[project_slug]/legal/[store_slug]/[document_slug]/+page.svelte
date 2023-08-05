@@ -1,10 +1,14 @@
-<script lang='ts'>
+<script lang="ts">
+  import shared from "data/shared.json";
   import Legal from "components/Legal/Legal.svelte";
 
-  export let data: { name: string, document: string, text: string };
+  export let data: LegalPageData;
+
+  const { name, slug, text } = data;
+  const title = `${shared.legal[slug]} – ${name}`;
 </script>
 
-<Legal text={data.text} />
+<Legal {text} />
 <svelte:head>
-  <title>{data.name} {data.document}</title>
+  <title>{title}</title>
 </svelte:head>

@@ -1,15 +1,16 @@
 <script lang="ts">
-  import projects from 'data/projects.json';
+  import shared from "data/shared.json";
   import Footer from 'components/Footer/Footer.svelte';
   import Support from 'components/Support/Support.svelte';
   
-  export let data: { slug: ProjectSlug };
+  export let data: SupportPageData;
 
-  const project = projects[data.slug];
+  const { name, text } = data;
+  const title = `${shared.supportTitle} – ${name}`
 </script>
 
-<Support text={project.support} />
+<Support {text} />
 <Footer />
 <svelte:head>
-  <title>{project.name} User Support</title>
+  <title>{title}</title>
 </svelte:head>

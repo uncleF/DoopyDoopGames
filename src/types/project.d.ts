@@ -1,17 +1,31 @@
+type ProjectPlatformName = 'App Store' | 'Google Play' | 'Amazon Appstore';
+type ProjectPlatformSlug = 'apple' | 'google' | 'amazon';
 type ProjectName = 'Sunny Sudoku' | "Band Rush";
 type ProjectSlug = 'sunny-sudoku' | 'band-rush';
-type ProjectPlatform = 'apple' | 'google' | 'amazon';
-
-type ProjectStore = {
-  href: string;
-  "privacy-policy": string;
-  "terms-and-conditions": string;
-}
 
 type ProjectStoreConfig = {
-  classSuffix: string,
+  name: ProjectPlatformName,
   linkText: string,
   legalLinkText: string
 }
 
-type ProjectStores = Partial<Record<ProjectPlatform, ProjectStore>>;
+type ProjectStore = { href: string } & Record<DocumentSlug, string>
+
+type ProjectStores = Record<ProjectPlatformSlug, ProjectStore>;
+
+type Project = {
+  name: ProjectName,
+  description: string,
+  icon: string,
+  enabled: boolean,
+  support: string,
+  stores: ProjectStores,
+  playURL: string,
+}
+
+type Projects = Record<ProjectSlug, Project>;
+
+declare module "data/projects.json" {
+  const value: Projects;
+  export default value;
+}

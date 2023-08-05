@@ -1,14 +1,14 @@
-<script lang='ts'>
-  import projects from 'data/projects.json';
+<script lang="ts">
   import Project from 'components/Project/Project.svelte';
 
-  export let data: { slug: ProjectSlug };
+  export let data: ProjectPageData;
 
-  const { slug } = data;
-  const project = projects[slug];
+  const { slug, project } = data;
 </script>
 
-<Project {slug} />
+<Project
+  {slug}
+  {project} />
 <svelte:head>
   <title>{project.name}</title>
 </svelte:head>

@@ -1,18 +1,22 @@
-import type { LoadEvent } from "@sveltejs/kit"
+import type { LoadEvent } from "@sveltejs/kit";
+import shared from 'data/shared.json';
 import projects from 'data/projects.json'; 
 
-export async function load({ params }: LoadEvent) {
+export async function load({ params }: LoadEvent<{ project_slug: ProjectSlug, store_slug: ProjectPlatformSlug, document_slug: DocumentSlug }>) {
   const { project_slug, store_slug, document_slug } = params;
   if (!project_slug || !store_slug || !document_slug) {
     throw new Error("No slug provided");
   }
   const project = projects[project_slug];
   if (!project || !project.stores[store_slug] || !project.stores[store_slug][document_slug]) {
-    return null;
+    throw new Error("Project or document not found.");
   }
+  const { name, stores } = project;
+  const document = shared.legal[document_slug];
+  const text = stores[store_slug][document_slug];
   return {
-    name: project.name,
-    text: project.stores[store_slug][document_slug],
-    document: document_slug == 'privacy-policy' ? "Privacy Policy" : "Terms and Conditions"
+    name,
+    document,
+    text,
   };
 }

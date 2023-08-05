@@ -1,13 +1,14 @@
 <script lang="ts">
   import shared from 'data/shared.json';
+  import { transformNameToClassNameComponent } from 'utilities/helpers';
 
   export let name: string;
-  export let store: ProjectPlatform;
+  export let store: ProjectPlatformSlug;
   export let href: string;
 
-  const { linkText, classSuffix } = shared.stores[store];
+  const { linkText, name: storeName } = shared.stores[store];
   const text = `${name} – ${linkText}`;
-  const className = `storeLink storeLink-${classSuffix}`;
+  const className = `storeLink storeLink-${transformNameToClassNameComponent(storeName)}`;
 </script>
 
 <a

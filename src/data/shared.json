@@ -1,18 +1,29 @@
 {
+  "title": "Doopy Doop Games",
+  "legal": {
+    "terms-and-conditions": "Terms and Conditions",
+    "privacy-policy": "Privacy Policy"
+  },
+  "playTitle": "Play",
+  "playFrameSize": {
+    "width": "768",
+    "height": "1366"
+  },
+  "supportTitle": "User Support",
   "support": "For any inquiries or support-related questions regarding our projects, please direct all communications to our dedicated support email at <a href=\"mailto:ilja@doopydoop.com?subject=Support: I have a problem!\">ilja@doopydoop.com</a>. We're here to assist you promptly and ensure a smooth user experience.",
   "stores": {
     "apple": {
-      "classSuffix": "appStore",
+      "name": "App Store",
       "linkText": "Download on the App Store",
       "legalLinkText": "on the App Store"
     },
     "google": {
-      "classSuffix": "googlePlay",
+      "name": "Google Play",
       "linkText": "Get on Google Play",
       "legalLinkText": "on Google Play"
     },
     "amazon": {
-      "classSuffix": "amazonAppstore",
+      "name": "Amazon Appstore",
       "linkText": "Get on Amazon Appstore",
       "legalLinkText": "on the Amazon Appstore"
     }

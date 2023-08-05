@@ -3,6 +3,12 @@
   gap: 0.5em;
   font-weight: bold;
   text-transform: uppercase;
+  transform-origin: 50% 0;
+  transition: transform 0.25s ease-in-out;
+
+  .app-is-scrolled & {
+    transform: translateY(-0.5em) scale(0.75);
+  }
 }
 
 .navigationLink {
@@ -21,15 +27,16 @@
     height: 4px;
     border-radius: 2px;
     background: #ffce4f;
-    transition: all 0.25s ease-in-out;
+    transition: all 0.15s ease-in-out;
     pointer-events: none;
   }
 
+  &:target,
   &:hover,
   &-is-active {
     &::before {
       opacity: 0;
-      transform: translateY(0.35em);
+      transform: translateY(0.375em);
     }
   }
 }

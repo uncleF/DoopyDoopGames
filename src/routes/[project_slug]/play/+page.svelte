@@ -1,10 +1,14 @@
 <script lang="ts">
-  import projects from 'data/projects.json';
+  import shared from "data/shared.json";
   import Play from 'components/Play/Play.svelte';
 
-  export let data: { slug: ProjectSlug };
+  export let data: PlayPageData;
 
-  const project = projects[data.slug];
+  const { name, playURL } = data;
+  const title = `${shared.playTitle} – ${name}`;
 </script>
 
-<Play url={project.playURL} />
+<Play url={playURL} />
+<svelte:head>
+  <title>{title}</title>
+</svelte:head>

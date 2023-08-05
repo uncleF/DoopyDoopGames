@@ -3,11 +3,11 @@ import projects from 'data/projects.json';
 import { iterateEntries } from 'utilities/iteration';
 
 export function entries() {
-  return iterateEntries(projects).reduce(reduceEnabledSlugs, []);
+  return iterateEntries(projects).reduce(reduceAvailableSlugs, []);
 }
 
-function reduceEnabledSlugs(slugs: Record<"project_slug", ProjectSlug>[], [slug, project]: [ ProjectSlug, Project ]) {
-    if (project.enabled) {
+function reduceAvailableSlugs(slugs: Record<"project_slug", ProjectSlug>[], [slug, project]: [ ProjectSlug, Project ]) {
+    if (project.enabled && project.playURL) {
       slugs.push({ project_slug: slug });
     }
     return slugs;
@@ -22,8 +22,9 @@ export async function load({ params }: LoadEvent<{ project_slug: ProjectSlug }>)
   if (!project) {
     throw new Error("Project not found.");
   }
+  const { name, playURL } = project;
   return {
-    slug,
-    project,
+    name,
+    playURL,
   };
 }

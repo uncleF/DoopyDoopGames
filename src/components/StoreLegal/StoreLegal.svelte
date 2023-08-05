@@ -2,7 +2,7 @@
   import shared from 'data/shared.json';
 
   export let slug: string;
-  export let store: ProjectPlatform;
+  export let store: ProjectPlatformSlug;
 
   const text = shared.stores[store].legalLinkText;
 </script>

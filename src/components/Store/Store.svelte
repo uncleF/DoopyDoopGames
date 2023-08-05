@@ -5,11 +5,11 @@
 
   export let name: string;
   export let href: string;
-  export let store: ProjectPlatform;
+  export let store: ProjectPlatformSlug;
   export let slug: string;
 
-  const { classSuffix } = shared.stores[store];
-  const className = `store store-${classSuffix}`;
+  const { name: storeName } = shared.stores[store];
+  const className = `store store-${storeName}`;
 </script>
 
 <div class={className}>
