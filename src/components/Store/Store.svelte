@@ -1,5 +1,6 @@
 <script lang="ts">
   import shared from 'data/shared.json';
+  import { transformNameToClassNameComponent } from 'utilities/helpers';
   import StoreLink from 'components/StoreLink/StoreLink.svelte';
   import StoreLegal from 'components/StoreLegal/StoreLegal.svelte';
 
@@ -9,7 +10,7 @@
   export let slug: string;
 
   const { name: storeName } = shared.stores[store];
-  const className = `store store-${storeName}`;
+  const className = `store store-${transformNameToClassNameComponent(storeName)}`;
 </script>
 
 <div class={className}>
