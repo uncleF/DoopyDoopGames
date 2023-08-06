@@ -7,7 +7,7 @@ export function entries() {
 }
 
 function reduceAvailableSlugs(slugs: Record<"project_slug", ProjectSlug>[], [slug, project]: [ ProjectSlug, Project ]) {
-    if (project.enabled && project.playURL) {
+    if (project.enabled && project.webGL) {
       slugs.push({ project_slug: slug });
     }
     return slugs;
@@ -22,9 +22,9 @@ export async function load({ params }: LoadEvent<{ project_slug: ProjectSlug }>)
   if (!project) {
     throw new Error("Project not found.");
   }
-  const { name, playURL } = project;
+  const { name } = project;
   return {
+    slug,
     name,
-    playURL,
   };
 }

@@ -4,11 +4,14 @@
 
   export let data: PlayPageData;
 
-  const { name, playURL } = data;
+  const { slug, name } = data;
   const title = `${shared.playTitle} – ${name}`;
 </script>
 
-<Play url={playURL} />
+<Play
+  {slug}
+  {name} />
 <svelte:head>
   <title>{title}</title>
+  <meta name="description" content={title} />
 </svelte:head>

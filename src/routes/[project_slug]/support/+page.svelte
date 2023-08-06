@@ -13,4 +13,5 @@
 <Footer />
 <svelte:head>
   <title>{title}</title>
+  <meta name="description" content={title} />
 </svelte:head>

@@ -14,6 +14,10 @@
   background: #fff;
   font-size: 0.8rem;
 
+  & %link {
+    color: #1f499a;
+  }
+
   @include txmx-media('phone') {
     position: relative;
     flex-direction: column;

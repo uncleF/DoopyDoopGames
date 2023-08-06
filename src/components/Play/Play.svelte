@@ -1,10 +1,18 @@
 <script lang="ts">
   import shared from 'data/shared.json'
 
-  export let url: string;
+  export let slug: ProjectSlug
   export let name: ProjectName;
+
+  const src = `/${slug}/play/webgl/index.html`
 </script>
 
 <section class="play">
-  <iframe src={url} class="playFrame" frameborder="0" { ...shared.playFrameSize } title={name} allow="fullscreen"></iframe>
+  <iframe 
+    {src}
+    { ...shared.playFrameSize }
+    title={name}
+    class="playFrame"
+    frameborder="0"
+    allow="fullscreen"></iframe>
 </section>

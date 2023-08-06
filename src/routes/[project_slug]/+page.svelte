@@ -11,4 +11,5 @@
   {project} />
 <svelte:head>
   <title>{project.name}</title>
+  <meta name="description" content={project.description} />
 </svelte:head>

@@ -20,7 +20,7 @@ type Project = {
   enabled: boolean,
   support: string,
   stores: ProjectStores,
-  playURL: string,
+  webGL: boolean,
 }
 
 type Projects = Record<ProjectSlug, Project>;

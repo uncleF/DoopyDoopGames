@@ -20,4 +20,5 @@
 <Footer />
 <svelte:head>
   <title>{shared.title}</title>
+  <meta name="description" content={shared.description} />
 </svelte:head>

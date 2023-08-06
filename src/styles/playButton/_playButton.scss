@@ -1,6 +1,6 @@
 .playButton {
   @extend %playButton !optional;
-  display: block;
+  display: none;
   height: 3em;
   padding: 0 1em;
   margin: 1.5em 0 0;

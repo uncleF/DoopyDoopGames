@@ -6,4 +6,4 @@ type SupportPageData = { name: ProjectName, text: string }
 
 type LegalPageData = { slug: DocumentSlug, name: ProjectName, text: string }
 
-type PlayPageData = { name: ProjectName, playURL: string }
+type PlayPageData = { slug: ProjectSlug, name: ProjectName, playURL: string }

@@ -16,6 +16,7 @@ type SharedStores = Record<ProjectPlatformSlug, ProjectStoreConfig>;
 
 type SharedData = {
   title: string,
+  description: string,
   legal: Record<DocumentSlug, string>,
   playTitle: string,
   playFrameSize: Size,
