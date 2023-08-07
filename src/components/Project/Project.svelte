@@ -1,6 +1,7 @@
 <script lang="ts">
   import { transformNameToClassNameComponent } from 'utilities/helpers';
   import PlayButton from 'components/PlayButton/PlayButton.svelte';
+  import ProjectIcon from 'components/ProjectIcon/ProjectIcon.svelte';
   import Stores from 'components/Stores/Stores.svelte';
 
   export let slug: ProjectSlug;
@@ -12,8 +13,10 @@
 
 <section id={slug} class={className}>
   <h1>{name}</h1>
-  <img src={icon} alt={name} class="projectIcon">
   <p>{description}</p>
+  <ProjectIcon
+    src={icon}
+    alt={name} />
   {#if webGL}
     <PlayButton
       {slug}
