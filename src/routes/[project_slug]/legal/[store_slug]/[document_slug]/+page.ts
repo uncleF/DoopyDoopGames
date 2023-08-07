@@ -12,11 +12,10 @@ export async function load({ params }: LoadEvent<{ project_slug: ProjectSlug, st
     throw new Error("Project or document not found.");
   }
   const { name, stores } = project;
-  const document = shared.legal[document_slug];
   const text = stores[store_slug][document_slug];
   return {
     name,
-    document,
+    slug: document_slug,
     text,
   };
 }
