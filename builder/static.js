@@ -54,7 +54,7 @@ function processHTMLFile(filePath) {
         reject(err);
       } else {
         let result = data.replace(/(?:<.*\/_app\/immutable.*?>)|(?:\sdata-svelte-h=".*?")|(?:<!-- HEAD_svelte.*? -->)|(?:<!-- .*? -->)|(?:<script>(?:\n|\t)*{(?:\n|\t)*__sveltekit_(?:.|\n|\t)*?<\/script>)/g, '');
-        result = result.replace(/<title>/g, `<link rel="stylesheet" href="/css/styles.css?v=${Date.now()}>\n    <title>`);
+        result = result.replace(/<title>/g, `<link rel="stylesheet" href="/css/styles.css?v=${Date.now()}">\n    <title>`);
         result = result.replace(/<a href="\/(.*?)"/g, '<a href="/$1.html"');
         result = htmlMinifier.minify(result, {
           caseSensitive: false,
