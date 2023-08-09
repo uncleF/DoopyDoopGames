@@ -4,7 +4,7 @@
   export let slug: ProjectSlug
   export let name: ProjectName;
 
-  const src = `/${slug}/play/webgl/index.html`
+  const src = `/${slug}/play/webgl/index_web.html`
 </script>
 
 <section class="play">

@@ -22,9 +22,10 @@ export async function load({ params }: LoadEvent<{ project_slug: ProjectSlug }>)
   if (!project) {
     throw new Error("Project not found.");
   }
-  const { name } = project;
+  const { name, description } = project;
   return {
     slug,
     name,
+    description,
   };
 }
