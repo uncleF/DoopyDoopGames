@@ -157,7 +157,17 @@ function findCompressableFiles(dirPath, arrayOfFiles) {
 
 function checkCompression(fileName) {
   const ext = path.extname(fileName);
-  if (ext === '.html' || ext === '.css' || ext === '.js' || ext == '.svg' || ext === '.json' || ext === '.xml' || ext === '.ttf' ) {
+  if (
+      ext === '.html' ||
+      ext === '.css' ||
+      ext === '.js' ||
+      ext == '.svg' ||
+      ext === '.json' ||
+      ext === '.xml' ||
+      ext === '.ttf' ||
+      ext === '.wasm' ||
+      ext === '.data'
+    ) {
     return true;
   }
   return false;

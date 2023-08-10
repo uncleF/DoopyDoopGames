@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover">
+    <title>Sunny Sudoku</title>
+    <link href="styles/styles.css?1691686189" rel="stylesheet" type="text/css">
+    <script src="https://js.sentry-cdn.com/09c5f3debe764db8b6e973f0193b5797.min.js" crossorigin="anonymous" defer></script>
+    <script src="//connect.mail.ru/js/loader.js"></script>
+    <script src="scripts/MRPlatform.js?1691686189" defer></script>
+    <script src="scripts/utils.js?1691686189" defer></script>
+    <script src="Build/Sudoku-WebGL.loader.js" defer></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        if (window.Sentry) {
+          Sentry.init({
+            dsn: "https://09c5f3debe764db8b6e973f0193b5797@o4505373471211520.ingest.sentry.io/4505373481500672"
+          });
+        }
+
+        var canvas = document.querySelector("#applicationCanvas");
+        var buildUrl = "Build";
+        var config = {
+          dataUrl: buildUrl + "/2227a069511486ad6b20cd6c819ba1e8.data.gz",
+          frameworkUrl: buildUrl + "/7eae72c739fbe4fd9d74e93c97f3471c.js.gz",
+          codeUrl: buildUrl + "/566f585cd696573b40e017da1ec7cae6.wasm.gz",
+
+
+
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "DoopyDoop",
+          productName: "Sunny Sudoku",
+          productVersion: "3.0.1",
+        };
+
+        function onError(message) {
+          alert(message);
+        }
+
+        createUnityInstance(canvas, config, unityProgress)
+          .catch(onError);
+      });
+    </script>
+  </head>
+
+  <body>
+    <canvas id="applicationCanvas" class="applicationCanvas" width="768" height="1366"></canvas>
+    <div class="applicationPreload">
+      <img src="images/logo.png" width="245" height="352" class="applicationPreloadLogo" alt="Doopy Doop Games">
+      <div class="applicationPreloadProgress">
+        <div class="applicationPreloadProgressBar"></div>
+      </div>
+      <div class="applicationPreloadMessage">
+        The game is loading...<br>
+        Please, don't close the window.
+      </div>
+    </div>
+    <div class="applicationWarning">
+      The game is open in another tab.<br>
+      Please, refresh the page.
+    </div>
+  </body>
+</html>
