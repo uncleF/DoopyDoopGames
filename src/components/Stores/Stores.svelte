@@ -2,8 +2,8 @@
   import { iterateEntries } from 'utilities/iteration';
   import Store from 'components/Store/Store.svelte';
 
-  export let slug: string;
-  export let name: string;
+  export let slug: ProjectSlug;
+  export let name: ProjectName;
   export let stores: ProjectStores;
 </script>
 

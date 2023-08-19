@@ -17,4 +17,5 @@
     class="playFrame"
     frameborder="0"
     allow="fullscreen"></iframe>
+  <button class="fullscreenToggle">Toggle Fullscreen</button>
 </section>

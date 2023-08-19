@@ -4,10 +4,10 @@
   import StoreLink from 'components/StoreLink/StoreLink.svelte';
   import StoreLegal from 'components/StoreLegal/StoreLegal.svelte';
 
-  export let name: string;
+  export let name: ProjectName;
   export let href: string;
   export let store: ProjectPlatformSlug;
-  export let slug: string;
+  export let slug: ProjectSlug;
 
   const { name: storeName } = shared.stores[store];
   const className = `store store-${transformNameToClassNameComponent(storeName)}`;
@@ -20,5 +20,6 @@
     {href} />
   <StoreLegal
     {store}
+    {name}
     {slug} />
 </div>

@@ -1,4 +1,5 @@
 import type { LoadEvent } from "@sveltejs/kit"
+import shared from 'data/shared.json';
 import projects from 'data/projects.json';
 import { iterateEntries } from 'utilities/iteration';
 
@@ -25,5 +26,6 @@ export async function load({ params }: LoadEvent<{ project_slug: ProjectSlug }>)
   return {
     slug,
     project,
+    url: `${shared.url}/${slug}`
   };
 }

@@ -5,7 +5,7 @@
   import Stores from 'components/Stores/Stores.svelte';
 
   export let slug: ProjectSlug;
-  export let project: Project;
+  export let project: ProjectData;
   
   const { description, icon, name, webGL, stores } = project;
   const className = `${transformNameToClassNameComponent(name)}Project`;

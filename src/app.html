@@ -2,13 +2,13 @@
 <html lang="en">
 	<head>
 		<script>
-			if (navigator.userAgent.match(/(iPad|iPhone|iPod)/i)) {
-				document.documentElement.classList.add('device-ios');
-			} else if (navigator.userAgent.match(/android/i)) {
-				document.documentElement.classList.add('device-android');
+			function checkPlatform() {
+				if (navigator.userAgent.match(/(iPad|iPhone|iPod)/i)) {
+					document.documentElement.classList.add('device-ios');
+				} else if (navigator.userAgent.match(/android/i)) {
+					document.documentElement.classList.add('device-android');
+				}
 			}
-
-			window.addEventListener('scroll', onScroll)
 
 			function onScroll() {
 				requestAnimationFrame(updateScroll);
@@ -17,11 +17,45 @@
 			function updateScroll() {
 				document.documentElement.classList.toggle('app-is-scrolled', window.scrollY > 30);
 			}
+
+			function toggleFullscreen() {
+				if (document.fullscreenElement) {
+					document.exitFullscreen();
+				} else {
+					document.documentElement.requestFullscreen();
+				}
+			}
+
+			function  initFullscreenToggle() {				
+				const fullscreenToggle = document.querySelector('.fullscreenToggle');
+				if (fullscreenToggle) {
+					fullscreenToggle.classList.add('fullscreenToggle-is-enabled');
+					fullscreenToggle.addEventListener('click', toggleFullscreen);
+					document.addEventListener('fullscreenchange', () => {
+						if (document.fullscreenElement) {
+							fullscreenToggle.classList.add('fullscreenToggle-is-on');
+						} else {
+							fullscreenToggle.classList.remove('fullscreenToggle-is-on');
+						}
+					});
+				}
+			}
+
+			checkPlatform();
+			window.addEventListener('scroll', onScroll)
+			if (document.fullscreenEnabled)
+			{
+				document.addEventListener('DOMContentLoaded', initFullscreenToggle);
+			}
 		</script>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="robots" content="index, follow">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="applicable-device" content="pc, mobile">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="google-site-verification" content="osgVlhux6knP9KEdO27kX2SdFnyGs2hz0UGEXq6snNU">
 		<link rel="preload" href="/fonts/Nunito/nunito-semibold.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="preload" href="/fonts/Nunito/nunito-semibolditalic.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="preload" href="/fonts/Nunito/nunito-black.woff2" as="font" type="font/woff2" crossorigin>

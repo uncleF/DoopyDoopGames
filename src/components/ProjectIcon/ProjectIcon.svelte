@@ -11,7 +11,7 @@
 </script>
 
 <picture class="projectIcon">
-  <source srcset={webpSrcset} type="image/webp" />
-  <source srcset={pngSrcset} type="image/png" />
-  <img {src} {alt} class="projectIcon" />
+  <source srcset={webpSrcset} type="image/webp" width="130" height="130" />
+  <source srcset={pngSrcset} type="image/png" width="130" height="130" />
+  <img {src} {alt} title={alt} class="projectIcon" width="130" height="130" loading="eager" />
 </picture>

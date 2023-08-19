@@ -9,14 +9,18 @@ type ProjectStoreConfig = {
   legalLinkText: string
 }
 
-type ProjectStore = { href: string } & Record<DocumentSlug, string>
+type ProjectStore = { href: string, id: string } & Record<DocumentSlug, string>
 
 type ProjectStores = Record<ProjectPlatformSlug, ProjectStore>;
 
-type Project = {
+type ProjectData = {
   name: ProjectName,
+  subtitle: string,
   description: string,
+  briefDescription: string,
+  tags: string[],
   icon: string,
+  metaImage: string,
   enabled: boolean,
   support: string,
   stores: ProjectStores,

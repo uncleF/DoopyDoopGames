@@ -15,6 +15,7 @@
   {href}
   class={className}
   target="_blank"
-  title={text}>
+  title={text}
+  rel="noindex nofollow">
     {text}
 </a>

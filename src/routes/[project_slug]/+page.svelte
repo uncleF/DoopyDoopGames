@@ -1,5 +1,6 @@
 <script lang="ts">
   import Project from 'components/Project/Project.svelte';
+  import ProjectMeta from 'components/ProjectMeta/ProjectMeta.svelte';
 
   export let data: ProjectPageData;
 
@@ -9,7 +10,5 @@
 <Project
   {slug}
   {project} />
-<svelte:head>
-  <title>{project.name}</title>
-  <meta name="description" content={project.description} />
-</svelte:head>
+<ProjectMeta
+  {data} />

@@ -1,6 +1,6 @@
 type Size = {
-  width: number,
-  height: number
+  width: integer,
+  height: integer
 };
 
 type DocumentSlug = "terms-and-conditions" | "privacy-policy";
@@ -17,6 +17,10 @@ type SharedStores = Record<ProjectPlatformSlug, ProjectStoreConfig>;
 type SharedData = {
   title: string,
   description: string,
+  url: string,
+  locale: string,
+  metaImage: string,
+  metaImageSize: Size,
   legal: Record<DocumentSlug, string>,
   playTitle: string,
   playFrameSize: Size,

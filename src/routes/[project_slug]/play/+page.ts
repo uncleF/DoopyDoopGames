@@ -1,4 +1,5 @@
 import type { LoadEvent } from "@sveltejs/kit"
+import shared from 'data/shared.json';
 import projects from 'data/projects.json';
 import { iterateEntries } from 'utilities/iteration';
 
@@ -22,10 +23,10 @@ export async function load({ params }: LoadEvent<{ project_slug: ProjectSlug }>)
   if (!project) {
     throw new Error("Project not found.");
   }
-  const { name, description } = project;
+  const url = `${shared.url}/${slug}/play`;
   return {
     slug,
-    name,
-    description,
+    project,
+    url,
   };
 }

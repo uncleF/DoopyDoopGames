@@ -1,0 +1,21 @@
+.fullscreenToggle {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  display: none;
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  background: url("/images/fullscreen.svg") no-repeat;
+  background-size: 145px 70px;
+  border: 0;
+  text-indent: -10000px;
+
+  &-is-enabled {
+    display: block;
+  }
+
+  &-is-on {
+    background-position: -75px 0;
+  }
+}

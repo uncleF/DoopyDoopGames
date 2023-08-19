@@ -1,7 +1,8 @@
 <script lang="ts">
   import shared from 'data/shared.json';
 
-  export let slug: string;
+  export let slug: ProjectSlug;
+  export let name: ProjectName;
   export let store: ProjectPlatformSlug;
 
   const text = shared.stores[store].legalLinkText;
@@ -15,6 +16,6 @@
     <a href={`/${slug}/legal/${store}/terms-and-conditions`}>Terms and Conditions {text}</a>
   </li>
   <li>
-    <a href={`/${slug}/support`}>Sunny Sudoku User Support</a>
+    <a href={`/${slug}/support`}>{name} User Support</a>
   </li>
 </ul>

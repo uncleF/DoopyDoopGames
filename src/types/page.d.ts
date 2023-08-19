@@ -5,22 +5,26 @@ type IndexPageData = {
 
 type ProjectPageData = {
   slug: ProjectSlug,
-  project: ProjectData
+  project: ProjectData,
+  url: string,
 }
 
 type SupportPageData = {
+  slug: ProjectSlug,
   name: ProjectName,
-  text: string
+  text: string,
+  url: string,
 }
 
 type LegalPageData = {
   slug: DocumentSlug,
   name: ProjectName,
-  text: string
+  text: string,
+  url: string,
 }
 
 type PlayPageData = {
   slug: ProjectSlug,
-  name: ProjectName,
-  description
+  project: ProjectData,
+  url: string,
 }
