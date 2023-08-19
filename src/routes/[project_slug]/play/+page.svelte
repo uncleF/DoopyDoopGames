@@ -13,4 +13,3 @@
   {name} />
 <PlayMeta
   {data} />
-

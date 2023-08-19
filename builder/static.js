@@ -5,6 +5,23 @@ import * as zlib from 'zlib';
 import * as sass from 'sass';
 import * as htmlMinifier from 'html-minifier';
 
+const GOOGLE_ADS = `
+<div class="adUnit">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4146222498178111"
+     crossorigin="anonymous"></script>
+<!-- Sunny Sudoku WebGL Ad Unit -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4146222498178111"
+     data-ad-slot="1779061154"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+`;
+
 function removeAppFolder() {
   return new Promise((resolve, reject) => {
     rimraf('./build/_app', (err) => {
@@ -76,6 +93,9 @@ function processHTMLFile(filePath) {
           removeTagWhitespace: false,
           useShortDoctype: false
         });
+        if (shouldAddGoogleAds(filePath)) {
+          result = result.replace(/<\/body>/g, `${GOOGLE_ADS}}</body>`);
+        }
         fs.writeFile(filePath, result, 'utf8', (err) => {
           if (err) {
             console.error(err);
@@ -86,6 +106,11 @@ function processHTMLFile(filePath) {
       }
     });
   });
+}
+
+function shouldAddGoogleAds(filePath) {
+  const fileName = path.basename(filePath);
+  return fileName === 'play.html';
 }
 
 function findHTMLFiles(dirPath, arrayOfFiles) {

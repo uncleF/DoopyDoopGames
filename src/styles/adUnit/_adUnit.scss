@@ -1,0 +1,10 @@
+.adUnit {
+  position: absolute;
+  left: 50%;
+  top: 100px;
+  bottom: 1em;
+  width: calc(50vw - (100vh * 0.2812) - 2em);
+  max-width: 400px;
+  margin: 0 0 0 (100vh * 0.2812);
+  transform: translateX(1em);
+}
