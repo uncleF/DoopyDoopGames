@@ -1,5 +1,6 @@
 import projects from 'data/projects.json';
-import { iterateEntries } from 'utilities/iteration';
+
+export const iterateEntries = Object.entries as <T>(obj: T) => Array<[keyof T, T[keyof T]]>
 
 export function transformNameToClassNameComponent(name: string): string {
   return name
@@ -91,14 +92,16 @@ export function generateWebGLAvailableProjectEntries() {
 }
 
 export function generateIndexPageMetaData(shared: SharedData): MetaData {
+  const { title, description, url, locale, metaImage, metaImageSize } = shared;
   return {
-    title: shared.title,
-    description: shared.description,
-    url: shared.url,
-    locale: shared.locale,
-    metaImage: shared.metaImage,
-    metaImageType: generateImageMIMEType(shared.metaImage),
-    metaImageSize: shared.metaImageSize,
+    title,
+    description,
+    url,
+    locale,
+    metaSiteName: shared.title,
+    metaImage: generateMetaImageURL(shared, metaImage),
+    metaImageType: generateImageMIMEType(metaImage),
+    metaImageSize: metaImageSize,
   }
 }
 
@@ -112,10 +115,11 @@ export function generateProjectPageMetaData(slug: ProjectSlug, project: ProjectD
     locale: shared.locale,
     tags,
     metaTitle: name,
+    metaSiteName: shared.title,
     metaImage: generateMetaImageURL(shared, metaImage),
-    metaImageType: generateImageMIMEType(shared.metaImage),
+    metaImageType: generateImageMIMEType(metaImage),
     metaImageSize: shared.metaImageSize,
-    appleAppId: project.stores?.apple?.id,
+    appleAppId: project.platforms?.apple?.id,
   }
 }
 
@@ -128,9 +132,9 @@ export function generatePlayPageMetaData(slug: ProjectSlug, project: ProjectData
     url: generatePlayURL(shared, slug),
     locale: shared.locale,
     tags,
-    metaTitle: name,
+    metaSiteName: shared.title,
     metaImage: generateMetaImageURL(shared, metaImage),
-    metaImageType: generateImageMIMEType(shared.metaImage),
+    metaImageType: generateImageMIMEType(metaImage),
     metaImageSize: shared.metaImageSize,
   }
 }
@@ -145,10 +149,11 @@ export function generateLegalPageMetaData(projectSlug: ProjectSlug, platformSlug
     locale: shared.locale,
     tags,
     metaTitle: name,
+    metaSiteName: shared.title,
     metaDescription: briefDescription,
     metaUrl: generateProjectURL(shared, projectSlug),
     metaImage: generateMetaImageURL(shared, metaImage),
-    metaImageType: generateImageMIMEType(shared.metaImage),
+    metaImageType: generateImageMIMEType(metaImage),
     metaImageSize: shared.metaImageSize,
   }
 }
@@ -163,10 +168,11 @@ export function generateSupportPageMetaData(slug: ProjectSlug, project: ProjectD
     locale: shared.locale,
     tags,
     metaTitle: name,
+    metaSiteName: shared.title,
     metaDescription: briefDescription,
     metaUrl: generateProjectURL(shared, slug),
     metaImage: generateMetaImageURL(shared, metaImage),
-    metaImageType: generateImageMIMEType(shared.metaImage),
+    metaImageType: generateImageMIMEType(metaImage),
     metaImageSize: shared.metaImageSize,
   }
 }

@@ -7,13 +7,13 @@ type NavigationLink = {
 
 type NavigationLinks = NavigationLink[];
 
-type ProjectStoreConfig = {
+type ProjectPlatformConfig = {
   name: ProjectPlatformName,
   linkText: string,
   legalLinkText: string
 }
 
-type ProjectStoresConfig = Record<ProjectPlatformSlug, ProjectStoreConfig>;
+type ProjectPlatformsConfig = Record<ProjectPlatformSlug, ProjectPlatformConfig>;
 
 type SharedData = {
   title: string,
@@ -28,7 +28,7 @@ type SharedData = {
   supportTitle: string,
   supportDescription: string,
   support: string,
-  stores: ProjectStoresConfig
+  platforms: ProjectPlatformsConfig
 }
 
 declare module "data/shared.json" {

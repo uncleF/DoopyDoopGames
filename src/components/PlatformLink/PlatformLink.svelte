@@ -3,12 +3,12 @@
   import { transformNameToClassNameComponent } from 'utilities/helpers';
 
   export let name: string;
-  export let store: ProjectPlatformSlug;
+  export let platform: ProjectPlatformSlug;
   export let href: string;
 
-  const { linkText, name: storeName } = shared.stores[store];
+  const { linkText, name: platformName } = shared.platforms[platform];
   const text = `${name} – ${linkText}`;
-  const className = `storeLink storeLink-${transformNameToClassNameComponent(storeName)}`;
+  const className = `platformLink platformLink-${transformNameToClassNameComponent(platformName)}`;
 </script>
 
 <a

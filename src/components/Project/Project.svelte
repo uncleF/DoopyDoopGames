@@ -2,12 +2,12 @@
   import { transformNameToClassNameComponent } from 'utilities/helpers';
   import PlayButton from 'components/PlayButton/PlayButton.svelte';
   import ProjectIcon from 'components/ProjectIcon/ProjectIcon.svelte';
-  import Stores from 'components/Stores/Stores.svelte';
+  import Platforms from 'components/Platforms/Platforms.svelte';
 
   export let slug: ProjectSlug;
   export let project: ProjectData;
   
-  const { description, icon, name, webGL, stores } = project;
+  const { description, icon, name, webGL, platforms } = project;
   const className = `${transformNameToClassNameComponent(name)}Project`;
 </script>
 
@@ -22,10 +22,10 @@
       {slug}
       {name} />
   {/if}
-  {#if stores}
-    <Stores
+  {#if platforms}
+    <Platforms
       {slug}
       {name}
-      {stores} />
+      {platforms} />
   {/if}
 </section>

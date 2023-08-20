@@ -3,9 +3,9 @@ type ProjectPlatformSlug = 'apple' | 'google' | 'amazon';
 type ProjectName = 'Sunny Sudoku' | "Band Rush";
 type ProjectSlug = 'sunny-sudoku' | 'band-rush';
 
-type ProjectStore = { href: string, id: string } & Record<DocumentSlug, string>;
+type ProjectPlatform = { href: string, id: string } & Record<DocumentSlug, string>;
 
-type ProjectStores = Record<ProjectPlatformSlug, ProjectStore>;
+type ProjectPlatforms = Record<ProjectPlatformSlug, ProjectPlatform>;
 
 type ProjectWebGL = { available: boolean } & Record<DocumentSlug, string>;
 
@@ -19,7 +19,7 @@ type ProjectData = {
   metaImage: string,
   enabled: boolean,
   support: string,
-  stores: ProjectStores?,
+  platforms: ProjectPlatforms?,
   webGL: ProjectWebGL?,
 };
 

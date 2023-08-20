@@ -40,11 +40,11 @@ export function requestPlayPage(slug: ProjectSlug): Promise<PlayPageData> {
 
 export function requestLegalPage(projectSlug: ProjectSlug, platformSlug: ProjectPlatformSlug, documentSlug: DocumentSlug): Promise<LegalPageData> {
   const project = projects[projectSlug];
-  if (!project|| !project.stores || !project.stores[platformSlug] || !project.stores[platformSlug][documentSlug]) {
+  if (!project|| !project.platforms || !project.platforms[platformSlug] || !project.platforms[platformSlug][documentSlug]) {
     throw new Error("Project or document not found");
   }
-  const { name, stores } = project;
-  const text = stores[platformSlug][documentSlug];
+  const { name, platforms } = project;
+  const text = platforms[platformSlug][documentSlug];
   const legalPageData = {
     slug: documentSlug,
     name,

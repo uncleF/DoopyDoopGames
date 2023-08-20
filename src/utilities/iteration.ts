@@ -1,1 +1,0 @@
-  export const iterateEntries = Object.entries as <T>(obj: T) => Array<[keyof T, T[keyof T]]>

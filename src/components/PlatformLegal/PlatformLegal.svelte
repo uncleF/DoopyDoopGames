@@ -1,18 +1,18 @@
 <script lang="ts">
-  import { iterateEntries } from 'utilities/iteration';
+  import { iterateEntries } from 'utilities/helpers';
   import shared from 'data/shared.json';
 
   export let slug: ProjectSlug;
   export let name: ProjectName;
-  export let store: ProjectPlatformSlug;
+  export let platform: ProjectPlatformSlug;
 
-  const text = shared.stores[store].legalLinkText;
+  const text = shared.platforms[platform].legalLinkText;
 </script>
 
-<ul class="storeLegal">
+<ul class="platformLegal">
   {#each iterateEntries(shared.legal) as [legalSlug, legalTitle]}
     <li>
-      <a href={`/${slug}/legal/${store}/${legalSlug}`}>{legalTitle} {text}</a>
+      <a href={`/${slug}/legal/${platform}/${legalSlug}`}>{legalTitle} {text}</a>
     </li>
   {/each}
   <li>

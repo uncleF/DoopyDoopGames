@@ -1,7 +1,7 @@
 <script lang="ts">  
   export let data: MetaData;
   
-  const { title, description, url, locale, tags, appleAppId, metaImage, metaImageType, metaImageSize } = data;
+  const { title, description, url, locale, tags, appleAppId, metaSiteName, metaImage, metaImageType, metaImageSize } = data;
   const keywords = tags ? tags.join(", ") : null;
   const metaTitle = data.metaTitle || title;
   const metaDescription = data.metaDescription || description;
@@ -17,9 +17,11 @@
     <meta name="keywords" content={keywords} />
   {/if}
   <slot>
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={metaTitle} />
     <meta property="og:description" content={metaDescription} />
-    <meta property="og:site_name" content={metaTitle} />
+    {#if metaSiteName}
+      <meta property="og:site_name" content={metaSiteName} />
+    {/if}
     <meta property="og:url" content={metaUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={locale} />

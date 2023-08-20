@@ -6,6 +6,7 @@ type MetaData = {
   tags?: string[],
   appleAppId?: string,
   metaTitle?: string,
+  metaSiteName?: string,
   metaDescription?: string,
   metaUrl?: string,
   metaImage: string,

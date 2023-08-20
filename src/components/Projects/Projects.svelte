@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { iterateEntries } from 'utilities/iteration';
+  import { iterateEntries } from 'utilities/helpers';
   import Project from 'components/Project/Project.svelte';
 
   export let projects: Partial<Projects>;
