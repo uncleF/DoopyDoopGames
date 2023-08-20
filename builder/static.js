@@ -18,7 +18,8 @@ const GOOGLE_ADS = `
   <script>
       (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
-</div>`;
+</div>
+`;
 
 function removeAppFolder() {
   return new Promise((resolve, reject) => {
@@ -107,8 +108,9 @@ function processHTMLFile(filePath) {
 }
 
 function shouldAddGoogleAds(filePath) {
-  const fileName = path.basename(filePath);
-  return fileName === 'play.html';
+  // const fileName = path.basename(filePath);
+  // return fileName === 'play.html';
+  return false;
 }
 
 function findHTMLFiles(dirPath, arrayOfFiles) {
