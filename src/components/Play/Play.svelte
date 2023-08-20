@@ -12,7 +12,7 @@
 <section class={className}>
   <iframe 
     {src}
-    { ...shared.playFrameSize }
+    { ...shared.webGLFrameSize }
     title={name}
     class="playFrame"
     frameborder="0"

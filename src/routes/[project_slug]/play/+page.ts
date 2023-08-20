@@ -1,17 +1,9 @@
 import type { LoadEvent } from "@sveltejs/kit"
-import shared from 'data/shared.json';
-import projects from 'data/projects.json';
-import { iterateEntries } from 'utilities/iteration';
+import { requestPlayPage } from "utilities/api";
+import { generateWebGLAvailableProjectEntries } from "utilities/helpers";
 
 export function entries() {
-  return iterateEntries(projects).reduce(reduceAvailableSlugs, []);
-}
-
-function reduceAvailableSlugs(slugs: Record<"project_slug", ProjectSlug>[], [slug, project]: [ ProjectSlug, Project ]) {
-    if (project.enabled && project.webGL) {
-      slugs.push({ project_slug: slug });
-    }
-    return slugs;
+  return generateWebGLAvailableProjectEntries();  
 }
 
 export async function load({ params }: LoadEvent<{ project_slug: ProjectSlug }>) {
@@ -19,14 +11,6 @@ export async function load({ params }: LoadEvent<{ project_slug: ProjectSlug }>)
   if (!slug) {
     throw new Error("No slug provided");
   }
-  const project = projects[slug];
-  if (!project) {
-    throw new Error("Project not found.");
-  }
-  const url = `${shared.url}/${slug}/play`;
-  return {
-    slug,
-    project,
-    url,
-  };
+  const playPageData = await requestPlayPage(slug);
+  return playPageData;
 }

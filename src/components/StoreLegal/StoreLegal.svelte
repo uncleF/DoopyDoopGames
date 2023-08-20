@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { iterateEntries } from 'utilities/iteration';
   import shared from 'data/shared.json';
 
   export let slug: ProjectSlug;
@@ -9,12 +10,11 @@
 </script>
 
 <ul class="storeLegal">
-  <li>
-    <a href={`/${slug}/legal/${store}/privacy-policy`}>Privacy Policy {text}</a>
-  </li>
-  <li>
-    <a href={`/${slug}/legal/${store}/terms-and-conditions`}>Terms and Conditions {text}</a>
-  </li>
+  {#each iterateEntries(shared.legal) as [legalSlug, legalTitle]}
+    <li>
+      <a href={`/${slug}/legal/${store}/${legalSlug}`}>{legalTitle} {text}</a>
+    </li>
+  {/each}
   <li>
     <a href={`/${slug}/support`}>{name} User Support</a>
   </li>

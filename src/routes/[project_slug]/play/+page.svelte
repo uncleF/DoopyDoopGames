@@ -1,15 +1,12 @@
 <script lang="ts">
+  import Meta from 'components/Meta/Meta.svelte';
   import Play from 'components/Play/Play.svelte';
-  import PlayMeta from 'components/PlayMeta/PlayMeta.svelte';
 
   export let data: PlayPageData;
 
-  const { slug, project } = data;
+  const { slug, project, meta } = data;
   const { name } = project;
 </script>
 
-<Play
-  {slug}
-  {name} />
-<PlayMeta
-  {data} />
+<Play {slug} {name} />
+<Meta data={meta} />

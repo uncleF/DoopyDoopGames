@@ -1,5 +1,5 @@
 <script lang="ts">
-  import shared from 'data/shared.json';
+  export let title: string;
 </script>
 
 <section id="about" class="about">
@@ -8,6 +8,6 @@
     class="logo"
     width="407"
     height="629"
-    alt={shared.title}
-    title={shared.title} />
+    alt={title}
+    title={title} />
 </section>

@@ -1,0 +1,15 @@
+type MetaData = {
+  title: string,
+  description: string,
+  url: string,
+  locale: string,
+  tags?: string[],
+  appleAppId?: string,
+  metaTitle?: string,
+  metaDescription?: string,
+  metaUrl?: string,
+  metaImage: string,
+  metaImageType: string,
+  metaImageSize: Size,
+  appleAppId?: string,
+}

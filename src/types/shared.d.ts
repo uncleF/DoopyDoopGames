@@ -1,8 +1,3 @@
-type Size = {
-  width: integer,
-  height: integer
-};
-
 type DocumentSlug = "terms-and-conditions" | "privacy-policy";
 
 type NavigationLink = {
@@ -12,7 +7,13 @@ type NavigationLink = {
 
 type NavigationLinks = NavigationLink[];
 
-type SharedStores = Record<ProjectPlatformSlug, ProjectStoreConfig>;
+type ProjectStoreConfig = {
+  name: ProjectPlatformName,
+  linkText: string,
+  legalLinkText: string
+}
+
+type ProjectStoresConfig = Record<ProjectPlatformSlug, ProjectStoreConfig>;
 
 type SharedData = {
   title: string,
@@ -22,11 +23,12 @@ type SharedData = {
   metaImage: string,
   metaImageSize: Size,
   legal: Record<DocumentSlug, string>,
-  playTitle: string,
-  playFrameSize: Size,
+  webGLAction: string,
+  webGLFrameSize: Size,
   supportTitle: string,
+  supportDescription: string,
   support: string,
-  stores: SharedStores
+  stores: ProjectStoresConfig
 }
 
 declare module "data/shared.json" {

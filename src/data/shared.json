@@ -1,19 +1,19 @@
 {
-  "url": "https://doopydoop.com",
   "title": "Doopy Doop Games",
   "description": "Delightful adventures, vibrant visuals, and addictive gameplay. Unleash the joy!",
+  "url": "https://doopydoop.com",
+  "locale": "en_US",
   "metaImage": "/metaImage.png",
   "metaImageSize": {
     "width": 1200,
     "height": 630
   },
-  "locale": "en_US",
   "legal": {
     "terms-and-conditions": "Terms and Conditions",
     "privacy-policy": "Privacy Policy"
   },
-  "playTitle": "Play",
-  "playFrameSize": {
+  "webGLAction": "Play",
+  "webGLFrameSize": {
     "width": "768",
     "height": "1366"
   },

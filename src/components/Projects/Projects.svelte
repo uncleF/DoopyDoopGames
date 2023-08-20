@@ -2,11 +2,13 @@
   import { iterateEntries } from 'utilities/iteration';
   import Project from 'components/Project/Project.svelte';
 
-  export let projects: Projects;
+  export let projects: Partial<Projects>;
 </script>
 
 {#each iterateEntries(projects) as [slug, project]}
-  <Project
-    {slug}
-    {project} />
+  {#if project}
+    <Project
+      {slug}
+      {project} />
+  {/if}
 {/each}

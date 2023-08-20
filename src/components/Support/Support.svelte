@@ -1,7 +1,5 @@
 <script lang="ts">
-  import shared from 'data/shared.json';
-
-  export let text = shared.support;
+  export let text: string;
 </script>
 
 <section id="support" class="support">

@@ -1,14 +1,11 @@
 <script lang="ts">
+  import Meta from 'components/Meta/Meta.svelte';
   import Project from 'components/Project/Project.svelte';
-  import ProjectMeta from 'components/ProjectMeta/ProjectMeta.svelte';
 
   export let data: ProjectPageData;
 
-  const { slug, project } = data;
+  const { slug, project, meta } = data;
 </script>
 
-<Project
-  {slug}
-  {project} />
-<ProjectMeta
-  {data} />
+<Project {slug} {project} />
+<Meta data={meta} />

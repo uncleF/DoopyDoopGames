@@ -1,37 +1,41 @@
-<script lang="ts">
-  import { generateImageMIMEType } from 'utilities/helpers';
-  import shared from 'data/shared.json';
-
-  export let title: string = shared.title;
-  export let description: string = shared.description;
-  export let url: string = shared.url;
-
-  const { metaImage } = shared;
-  const metaImageURL = `${shared.url}${metaImage}`
-  const metaImageType = generateImageMIMEType(metaImage)
+<script lang="ts">  
+  export let data: MetaData;
+  
+  const { title, description, url, locale, tags, appleAppId, metaImage, metaImageType, metaImageSize } = data;
+  const keywords = tags ? tags.join(", ") : null;
+  const metaTitle = data.metaTitle || title;
+  const metaDescription = data.metaDescription || description;
+  const metaUrl = data.metaUrl || url;
+  const { width, height } = metaImageSize;
 </script>
 
 <svelte:head>
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={url} />
+  {#if keywords}
+    <meta name="keywords" content={keywords} />
+  {/if}
   <slot>
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={shared.description} />
-    <meta property="og:site_name" content={shared.title} />
-    <meta property="og:url" content={shared.url} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:site_name" content={metaTitle} />
+    <meta property="og:url" content={metaUrl} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content={shared.locale} />
-    <meta property="og:image" content={metaImageURL} />
-    <meta property="og:image:alt" content={shared.title} />
+    <meta property="og:locale" content={locale} />
+    <meta property="og:image" content={metaImage} />
+    <meta property="og:image:alt" content={metaTitle} />
     <meta property="og:image:type" content={metaImageType} />
-    <meta property="og:image:width" content={shared.metaImageSize.width.toString()} />
-    <meta property="og:image:height" content={shared.metaImageSize.height.toString()} />
-    <meta name="twitter:title" content={shared.title} />
-    <meta name="twitter:description" content={shared.description} />
-    <meta name="twitter:site" content={shared.url} />
+    <meta property="og:image:width" content={width.toString()} />
+    <meta property="og:image:height" content={height.toString()} />
+    <meta name="twitter:title" content={metaTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:site" content={metaUrl} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content={metaImageURL}>
-    <meta name="twitter:image:alt" content={shared.title} />
+    <meta name="twitter:image" content={metaImage}>
+    <meta name="twitter:image:alt" content={metaTitle} />
+    {#if appleAppId}
+      <meta name="apple-itunes-app" content={`app-id=${appleAppId}`} />
+    {/if}
   </slot>
 </svelte:head>
