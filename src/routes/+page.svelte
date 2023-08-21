@@ -9,12 +9,14 @@
 
   export let data: IndexPageData;
 
-  const { title, projects, links, meta, support } = data;
+  const { title, about, projects, links, social, support, email, meta } = data;
   setContext('links', links);
+  setContext('social', social);
+  setContext('email', email);
 </script>
 
 <Header />
-<About {title} />
+<About {title} {about} />
 <Projects {projects} />
 <Support text={support} />
 <Footer />

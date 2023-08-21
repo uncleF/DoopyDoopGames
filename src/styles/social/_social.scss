@@ -1,0 +1,46 @@
+.social {
+  display: none;
+  order: -1;
+  list-style: none;
+  margin: 0 20px 0 0;
+  padding: 0;
+
+  li {
+    margin: 0;
+  }
+
+  @include txmx-media('phone') {
+    margin: 0 0 -10px -10px;
+  }
+}
+
+.socialLink {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: 40px;
+  height: 0;
+  padding: 100% 0 0;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    content: '';
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin: -7.5px 0 0 -7.5px;
+    background-image: url('/images/social.png');
+    background-image: url('/images/social.webp');
+    background-repeat: no-repeat;
+    background-size: 35px 15px;
+  }
+
+  &-x {
+    &::before {
+      background-position: -20px 0;
+    }
+  }
+}

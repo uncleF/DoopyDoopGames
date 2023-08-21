@@ -4,17 +4,62 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @include txmx-media('phone') {
+    min-height: 0;
+  }
 }
 
 .logo {
+  position: absolute;
+  top: 50%;
+  left: 55%;
   display: block;
-  width: 40%;
+  width: 35%;
   max-width: 469px;
   margin: 2rem 0 0;
+  transform: translateY(-50%);
 
   @include txmx-media('phone') {
+    position: relative;
+    top: 0;
+    left: 0;
     width: 60%;
+    height: auto;
     max-width: 300px;
+    margin: 5rem 0 0;
+    transform: none;
+  }
+}
+
+.aboutText {
+  position: absolute;
+  right: 50%;
+  bottom: 50%;
+  width: 40%;
+  max-width: 600px;
+  margin: 0 0 -10vw;
+  font-size: 1.5rem;
+  text-align: right;
+  transform: translateY(50%);
+
+  @include txmx-media('phone') {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    max-width: none;
     margin: 0;
+    padding: 50px $txgl-gap-small;
+    font-size: 1rem;
+    text-align: left;
+    transform: none;
+  }
+
+  @supports (background-clip: text) or (-webkit-background-clip: text) {
+    background: linear-gradient(-15deg, #8110ff, #1455fd 80%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
 }

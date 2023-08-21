@@ -2,6 +2,8 @@ import projects from 'data/projects.json';
 
 export const iterateEntries = Object.entries as <T>(obj: T) => Array<[keyof T, T[keyof T]]>
 
+export const iterateKeys = Object.keys as <T>(obj: T) => Array<keyof T>
+
 export function transformNameToClassNameComponent(name: string): string {
   return name
     .replace(/^./, name[0].toLowerCase())
@@ -35,12 +37,37 @@ export function generateImageMIMEType(image: string): string {
   }
 }
 
+export function insertEmailLinks(text: string, emailLink: string): string {
+  return text.replace(/{EMAIL}/g, emailLink);
+}
+
+export function insertEmailSubject(text: string, subject?: string): string {
+  if (!subject) {
+    return text.replace(/{SUBJECT}/g, '');
+  }
+  return text.replace(/{SUBJECT}/g, `?subject=${subject}`);
+}
+
+export function insertProjectName(text: string, project?: ProjectName): string {
+  if (!project) {
+    return text.replace(/{SUBJECT}/g, '');
+  }
+  return text.replace(/{PROJECT}/g, project);
+}
+
+export function processEmail(text: string, email: string, subject?: string, project?: ProjectName): string {
+  let processedEmail = `<a href="mailto:${email}{SUBJECT}">${email}</a>`;
+  processedEmail = insertEmailSubject(processedEmail, subject);
+  processedEmail = insertProjectName(processedEmail, project);
+  return insertEmailLinks(text, processedEmail);
+}
+
 export function reduceProjectsAndLinks(projectsAndLinks: { projects: Partial<Projects>, links: NavigationLinks }, [ slug, project ]: [ ProjectSlug, ProjectData ]): { projects: Partial<Projects>, links: NavigationLinks } {
   const { name, enabled } = project;
   if (enabled) {
     projectsAndLinks.links.push({ slug, name: name });
     projectsAndLinks.projects[slug] = project;
-  }
+  } 
   return projectsAndLinks;
 }
 
@@ -91,8 +118,9 @@ export function generateWebGLAvailableProjectEntries() {
   return iterateEntries(projects).reduce(reduceWebGLAvailableSlugs, []);
 }
 
-export function generateIndexPageMetaData(shared: SharedData): MetaData {
+export function generateIndexPageMetaData(projects: Projects, shared: SharedData): MetaData {
   const { title, description, url, locale, metaImage, metaImageSize } = shared;
+  const project = projects[shared.promoProject];
   return {
     title,
     description,
@@ -102,6 +130,7 @@ export function generateIndexPageMetaData(shared: SharedData): MetaData {
     metaImage: generateMetaImageURL(shared, metaImage),
     metaImageType: generateImageMIMEType(metaImage),
     metaImageSize: metaImageSize,
+    appleAppId: project.platforms?.apple?.id,
   }
 }
 

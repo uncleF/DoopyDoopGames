@@ -1,5 +1,6 @@
 <script lang="ts">
   export let title: string;
+  export let about: string;
 </script>
 
 <section id="about" class="about">
@@ -10,4 +11,5 @@
     height="629"
     alt={title}
     title={title} />
+  <div class="aboutText">{about}</div>
 </section>

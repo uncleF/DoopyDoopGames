@@ -1,13 +1,16 @@
 import shared from 'data/shared.json';
 import projects from 'data/projects.json';
-import { generateProjectsAndLinks, generateIndexPageMetaData, generateProjectPageMetaData, generatePlayPageMetaData, generateLegalPageMetaData, generateSupportPageMetaData } from 'utilities/helpers';
+import { processEmail, generateProjectsAndLinks, generateIndexPageMetaData, generateProjectPageMetaData, generatePlayPageMetaData, generateLegalPageMetaData, generateSupportPageMetaData } from 'utilities/helpers';
 
 export function requestIndexPage(): Promise<IndexPageData> {
   const indexPageData = {
     ...generateProjectsAndLinks(projects),
     title: shared.title,
-    support: shared.support,
-    meta: generateIndexPageMetaData(shared),
+    about: shared.description,
+    support: processEmail(shared.support, shared.email, shared.supportSubject),
+    social: shared.social,
+    email: shared.email,
+    meta: generateIndexPageMetaData(projects, shared),
   }
   return Promise.resolve(indexPageData);
 }
@@ -48,7 +51,7 @@ export function requestLegalPage(projectSlug: ProjectSlug, platformSlug: Project
   const legalPageData = {
     slug: documentSlug,
     name,
-    text,
+    text: processEmail(text, shared.email),
     meta: generateLegalPageMetaData(projectSlug, platformSlug, documentSlug, project, shared),
   };
   return Promise.resolve(legalPageData);
@@ -59,11 +62,13 @@ export function requestSupportPage(slug: ProjectSlug): Promise<SupportPageData> 
   if (!project) {
     throw new Error("Project not found.");
   }
-  const { name, support: text } = project;
+  const { name, support } = project;
   const supportPageData = {
     slug,
     name,
-    text,
+    text: processEmail(support, shared.email, shared.supportProjectSubject, name),
+    social: shared.social,
+    email: shared.email,
     meta: generateSupportPageMetaData(slug, project, shared),
   };
   return Promise.resolve(supportPageData);

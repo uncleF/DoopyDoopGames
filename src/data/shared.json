@@ -1,13 +1,15 @@
 {
   "title": "Doopy Doop Games",
-  "description": "Delightful adventures, vibrant visuals, and addictive gameplay. Unleash the joy!",
+  "description": "We're a small game development company specializing in creating fun, captivating, and colorful games. Feel free to explore one or more of our lively creations.",
   "url": "https://doopydoop.com",
+  "email": "ilja@doopydoop.com",
   "locale": "en_US",
   "metaImage": "/metaImage.png",
   "metaImageSize": {
     "width": 1200,
     "height": 630
   },
+  "promoProject": "sunny-sudoku",
   "legal": {
     "terms-and-conditions": "Terms and Conditions",
     "privacy-policy": "Privacy Policy"
@@ -17,9 +19,11 @@
     "width": "768",
     "height": "1366"
   },
+  "support": "For any inquiries or support-related questions regarding our projects, please direct all communications to our dedicated support email at {EMAIL}. We're here to assist you promptly and ensure a smooth user experience.",
+  "supportSubject": "Support: I have a problem!",
+  "supportProjectSubject": "Support: I have a problem with {PROJECT}!",
   "supportTitle": "User Support",
-  "supportDescription": "",
-  "support": "For any inquiries or support-related questions regarding our projects, please direct all communications to our dedicated support email at <a href=\"mailto:ilja@doopydoop.com?subject=Support: I have a problem!\">ilja@doopydoop.com</a>. We're here to assist you promptly and ensure a smooth user experience.",
+  "supportDescription": "User Support",
   "platforms": {
     "apple": {
       "name": "App Store",
@@ -36,5 +40,15 @@
       "linkText": "Get on Amazon Appstore",
       "legalLinkText": "on the Amazon Appstore"
     }
-  }
+  },
+  "social": [
+    {
+      "platform": "x",
+      "href": "https://www.x.com/doopydoopgames"
+    },
+    {
+      "platform": "instagram",
+      "href": "https://www.instagram.com/doopydoopgames"
+    }
+  ]
 }

@@ -2,7 +2,10 @@ type IndexPageData = {
   title: string,
   links: NavigationLinks,
   projects: Partial<Projects>,
+  about: string,
   support: string,
+  social: SocialLinks,
+  email: string,
   meta: MetaData,
 }
 
@@ -22,6 +25,8 @@ type SupportPageData = {
   slug: ProjectSlug,
   name: ProjectName,
   text: string,
+  social: SocialLinks,
+  email: string,
   meta: MetaData,
 }
 
