@@ -1,27 +1,50 @@
 {
+    "id": "doopydoop",
     "name": "Doopy Doop Games",
-    "short_name": "DoopyDoop",
-    "description": "Delightful adventures, vibrant visuals, and addictive gameplay. Unleash the joy!",
+    "short_name": "Doopy Doop",
+    "description": "We're a small game development company specializing in creating fun, captivating, and colorful games. Feel free to explore one or more of our lively creations.",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png",
-            "purpose": "any maskable"
+            "purpose": "any"
+        },
+        {
+            "src": "/android-chrome-maskable-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
         },
         {
             "src": "/android-chrome-256x256.png",
             "sizes": "256x256",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         },
         {
-            "src": "/splash-screen-icon.png",
+            "src": "/android-chrome-maskable-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/splash-screen-icon-512x512.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/splash-screen-icon-maskable-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
         }
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
     "display": "standalone",
+    "display_override": ["fullscreen", "minimal-ui"],
+    "orientation": "portrait-primary",
     "start_url": "/"
 }
