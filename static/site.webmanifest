@@ -1,7 +1,7 @@
 {
-    "id": "doopydoop",
     "name": "Doopy Doop Games",
     "short_name": "Doopy Doop",
+    "id": "/",
     "description": "We're a small game development company specializing in creating fun, captivating, and colorful games. Feel free to explore one or more of our lively creations.",
     "icons": [
         {
