@@ -1,8 +1,10 @@
-<script lang="ts">  
+<script lang="ts">
+  import { generateKeywords } from 'utilities/helpers';
+
   export let data: MetaData;
   
   const { title, description, url, locale, tags, appleAppId, metaSiteName, metaImage, metaImageType, metaImageSize } = data;
-  const keywords = tags ? tags.join(", ") : null;
+  const keywords = generateKeywords(tags);
   const metaTitle = data.metaTitle || title;
   const metaDescription = data.metaDescription || description;
   const metaUrl = data.metaUrl || url;

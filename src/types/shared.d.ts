@@ -8,6 +8,13 @@ type NavigationLink = {
 
 type NavigationLinks = NavigationLink[];
 
+type SocialLink = {
+  platform: SocialPlatform,
+  href: string
+}
+
+type SocialLinks = SocialLink[];
+
 type ProjectPlatformConfig = {
   name: ProjectPlatformName,
   linkText: string,
@@ -16,28 +23,21 @@ type ProjectPlatformConfig = {
 
 type ProjectPlatformsConfig = Record<ProjectPlatformSlug, ProjectPlatformConfig>;
 
-type SocialLink = {
-  platform: SocialPlatform,
-  href: string
-}
-
-type SocialLinks = SocialLink[];
-
 type SharedData = {
   title: string,
   description: string,
+  promoProject: ProjectSlug,
   url: string,
   email: string,
   locale: string,
+  copyrightYear: number,
   metaImage: string,
   metaImageSize: Size,
-  promoProject: ProjectSlug,
-  legal: Record<DocumentSlug, string>,
   webGLAction: string,
   webGLFrameSize: Size,
+  legal: Record<DocumentSlug, string>,
   support: string,
   supportTitle: string,
-  supportDescription: string,
   supportSubject: string,
   supportProjectSubject: string,
   platforms: ProjectPlatformsConfig

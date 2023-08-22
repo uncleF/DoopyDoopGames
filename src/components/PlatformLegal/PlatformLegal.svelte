@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { iterateEntries } from 'utilities/helpers';
   import shared from 'data/shared.json';
+  import { iterateEntries } from 'utilities/helpers';
 
   export let slug: ProjectSlug;
   export let name: ProjectName;
@@ -16,6 +16,6 @@
     </li>
   {/each}
   <li>
-    <a href={`/${slug}/support`}>{name} User Support</a>
+    <a href={`/${slug}/support`}>{name} {shared.supportTitle}</a>
   </li>
 </ul>

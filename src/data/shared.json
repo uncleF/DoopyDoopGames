@@ -1,29 +1,29 @@
 {
   "title": "Doopy Doop Games",
   "description": "We're a small game development company specializing in creating fun, captivating, and colorful games. Feel free to explore one or more of our lively creations.",
+  "promoProject": "sunny-sudoku",
   "url": "https://doopydoop.com",
   "email": "ilja@doopydoop.com",
   "locale": "en_US",
+  "copyrightYear": 2023,
   "metaImage": "/metaImage.png",
   "metaImageSize": {
     "width": 1200,
     "height": 630
-  },
-  "promoProject": "sunny-sudoku",
-  "legal": {
-    "terms-and-conditions": "Terms and Conditions",
-    "privacy-policy": "Privacy Policy"
   },
   "webGLAction": "Play",
   "webGLFrameSize": {
     "width": "768",
     "height": "1366"
   },
+  "legal": {
+    "privacy-policy": "Privacy Policy",
+    "terms-and-conditions": "Terms and Conditions"
+  },
   "support": "For any inquiries or support-related questions regarding our projects, please direct all communications to our dedicated support email at {EMAIL}. We're here to assist you promptly and ensure a smooth user experience.",
+  "supportTitle": "User Support",
   "supportSubject": "Support: I have a problem!",
   "supportProjectSubject": "Support: I have a problem with {PROJECT}!",
-  "supportTitle": "User Support",
-  "supportDescription": "User Support",
   "platforms": {
     "apple": {
       "name": "App Store",

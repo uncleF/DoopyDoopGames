@@ -10,12 +10,19 @@ export function transformNameToClassNameComponent(name: string): string {
     .replace(/\s/g, '');
 }
 
-export function findFileExtension(filename: string): string | null {
-  const extension = filename.split('.').pop();
-  if (extension) {
-    return extension;
+export function generateKeywords(tags: string[] | undefined): string | null {
+  if (!tags) {
+    return null;
   }
-  return null;
+  return tags.join(', ');
+}
+
+export function generateCopyrightYears(startYear: number): string {
+  const currentYear = new Date().getFullYear();
+  if (startYear === currentYear) {
+    return `${startYear}`;
+  }
+  return `${startYear}-${currentYear}`;
 }
 
 export function generateImageMIMEType(image: string): string {
@@ -35,6 +42,14 @@ export function generateImageMIMEType(image: string): string {
     default:
       return '';
   }
+}
+
+export function findFileExtension(filename: string): string | null {
+  const extension = filename.split('.').pop();
+  if (extension) {
+    return extension;
+  }
+  return null;
 }
 
 export function insertEmailLinks(text: string, emailLink: string): string {
