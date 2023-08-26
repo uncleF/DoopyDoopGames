@@ -20,7 +20,7 @@ node_modules
 /build
 /.svelte-kit
 /package
-/static/**/play
+# /static/**/play
 
 .env
 .env.*

@@ -3,7 +3,7 @@ type ProjectPlatformSlug = 'apple' | 'google' | 'amazon';
 type ProjectName = 'Sunny Sudoku' | "Band Rush";
 type ProjectSlug = 'sunny-sudoku' | 'band-rush';
 
-type ProjectPlatform = { href: string, id: string } & Record<DocumentSlug, string>;
+type ProjectPlatform = { href: string, id: string, utm?: UTM } & Record<DocumentSlug, string>;
 
 type ProjectPlatforms = Record<ProjectPlatformSlug, ProjectPlatform>;
 

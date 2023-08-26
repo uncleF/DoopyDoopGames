@@ -23,6 +23,8 @@ type ProjectPlatformConfig = {
 
 type ProjectPlatformsConfig = Record<ProjectPlatformSlug, ProjectPlatformConfig>;
 
+type UTMOptions = Record<string, UTM>
+
 type SharedData = {
   title: string,
   description: string,
@@ -33,6 +35,7 @@ type SharedData = {
   copyrightYear: number,
   metaImage: string,
   metaImageSize: Size,
+  utm: UTMOptions,
   webGLAction: string,
   webGLFrameSize: Size,
   legal: Record<DocumentSlug, string>,

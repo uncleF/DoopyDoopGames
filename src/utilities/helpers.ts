@@ -10,6 +10,37 @@ export function transformNameToClassNameComponent(name: string): string {
     .replace(/\s/g, '');
 }
 
+export function checkFullscreen() {
+  if (document) {
+    return document.documentElement.requestFullscreen;
+  }
+  return false;
+}
+
+export function toggleFullscreen() {
+  if (document) {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      document.documentElement.requestFullscreen();
+    }
+  }
+}
+
+export function checkIOS() {
+  if (navigator) {
+    return navigator.userAgent.match(/(iPad|iPhone|iPod)/i);
+  }
+  return false;
+}
+
+export function checkAndroid() {
+  if (navigator) {
+    return navigator.userAgent.match(/Android/i);
+  }
+  return false;
+}
+
 export function generateKeywords(tags: string[] | undefined): string | null {
   if (!tags) {
     return null;
@@ -23,6 +54,17 @@ export function generateCopyrightYears(startYear: number): string {
     return `${startYear}`;
   }
   return `${startYear}-${currentYear}`;
+}
+
+export function generateUTM(utm: UTM | undefined): string {
+  return iterateEntries(utm).map(([key, value]) => `utm_${key}=${value}`).join('&');
+}
+
+export function addUTM(url: string, utm: string): string {
+  if (url.includes('?')) {
+    return `${url}&${utm}`;
+  }
+  return `${url}?${utm}`;
 }
 
 export function generateImageMIMEType(image: string): string {

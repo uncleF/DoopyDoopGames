@@ -11,6 +11,23 @@
     "width": 1200,
     "height": 630
   },
+  "utm": {
+    "index": {
+      "source": "site",
+      "medium": "site",
+      "campaign": "index_page"
+    },
+    "project": {
+      "source": "site",
+      "medium": "site",
+      "campaign": "project_landing_page"
+    },
+    "play": {
+      "source": "site",
+      "medium": "site",
+      "campaign": "play_page"
+    }
+  },
   "webGLAction": "Play",
   "webGLFrameSize": {
     "width": "768",

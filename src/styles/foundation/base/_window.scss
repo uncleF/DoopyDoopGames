@@ -1,0 +1,5 @@
+.window {
+  &-is-scrolled {
+    @extend %window-is-scrolled;
+  }
+}

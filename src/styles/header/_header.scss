@@ -24,7 +24,7 @@
     transition: transform 0.15s ease-in-out;
   }
 
-  .app-is-scrolled & {
+  %window-is-scrolled & {
     &::before {
       transform: scaleY(0.65);
     }

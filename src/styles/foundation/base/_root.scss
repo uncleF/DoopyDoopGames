@@ -13,10 +13,12 @@ html {
   background: #fff;
 }
 
-.device-ios {
-  @extend %device-ios !optional;
-}
+.device {
+  &-ios {
+    @extend %device-ios !optional;
+  }
 
-.device-android {
-  @extend %device-android !optional;
+  &-android {
+    @extend %device-android !optional;
+  }
 }

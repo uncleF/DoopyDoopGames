@@ -7,18 +7,21 @@ type IndexPageData = {
   social: SocialLinks,
   email: string,
   meta: MetaData,
+  utm: UTM,
 }
 
 type ProjectPageData = {
   slug: ProjectSlug,
   project: ProjectData,
   meta: MetaData,
+  utm: UTM,
 }
 
 type PlayPageData = {
   slug: ProjectSlug,
   project: ProjectData,
   meta: MetaData,
+  utm: UTM,
 }
 
 type SupportPageData = {

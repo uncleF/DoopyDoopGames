@@ -1,53 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<script>
-			function checkPlatform() {
-				if (navigator.userAgent.match(/(iPad|iPhone|iPod)/i)) {
-					document.documentElement.classList.add('device-ios');
-				} else if (navigator.userAgent.match(/android/i)) {
-					document.documentElement.classList.add('device-android');
-				}
-			}
-
-			function onScroll() {
-				requestAnimationFrame(updateScroll);
-			}
-
-			function updateScroll() {
-				document.documentElement.classList.toggle('app-is-scrolled', window.scrollY > 30);
-			}
-
-			function toggleFullscreen() {
-				if (document.fullscreenElement) {
-					document.exitFullscreen();
-				} else {
-					document.documentElement.requestFullscreen();
-				}
-			}
-
-			function  initFullscreenToggle() {				
-				const fullscreenToggle = document.querySelector('.fullscreenToggle');
-				if (fullscreenToggle) {
-					fullscreenToggle.classList.add('fullscreenToggle-is-enabled');
-					fullscreenToggle.addEventListener('click', toggleFullscreen);
-					document.addEventListener('fullscreenchange', () => {
-						if (document.fullscreenElement) {
-							fullscreenToggle.classList.add('fullscreenToggle-is-on');
-						} else {
-							fullscreenToggle.classList.remove('fullscreenToggle-is-on');
-						}
-					});
-				}
-			}
-
-			checkPlatform();
-			window.addEventListener('scroll', onScroll)
-			if (document.fullscreenEnabled)
-			{
-				document.addEventListener('DOMContentLoaded', initFullscreenToggle);
-			}
-		</script>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="robots" content="index, follow">

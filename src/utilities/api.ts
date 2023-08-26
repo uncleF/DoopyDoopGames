@@ -11,6 +11,7 @@ export function requestIndexPage(): Promise<IndexPageData> {
     social: shared.social,
     email: shared.email,
     meta: generateIndexPageMetaData(projects, shared),
+    utm: shared.utm.index,
   }
   return Promise.resolve(indexPageData);
 }
@@ -24,6 +25,7 @@ export function requestProjectPage(slug: ProjectSlug): Promise<ProjectPageData> 
     slug,
     project: project,
     meta: generateProjectPageMetaData(slug, project, shared),
+    utm: shared.utm.project,
   };
   return Promise.resolve(projectPageData);
 }
@@ -37,6 +39,7 @@ export function requestPlayPage(slug: ProjectSlug): Promise<PlayPageData> {
     slug,
     project: project,
     meta: generatePlayPageMetaData(slug, project, shared),
+    utm: shared.utm.play,
   };
   return Promise.resolve(playPageData);
 }

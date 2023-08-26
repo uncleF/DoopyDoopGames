@@ -9,10 +9,11 @@
 
   export let data: IndexPageData;
 
-  const { title, about, projects, links, social, support, email, meta } = data;
+  const { title, about, projects, links, social, support, email, meta, utm } = data;
   setContext('links', links);
   setContext('social', social);
   setContext('email', email);
+  setContext('utm', utm);
 </script>
 
 <Header />

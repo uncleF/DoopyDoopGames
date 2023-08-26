@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { generateKeywords } from 'utilities/helpers';
+  import { getContext } from 'svelte';
+  import { generateUTM, addUTM, generateKeywords } from 'utilities/helpers';
 
   export let data: MetaData;
   
@@ -9,6 +10,15 @@
   const metaDescription = data.metaDescription || description;
   const metaUrl = data.metaUrl || url;
   const { width, height } = metaImageSize;
+  const utm: UTM = getContext('utm');
+  let metaUrlWithUtm = metaUrl;
+  if (utm) {
+    const utmParameters: UTM = { ...utm };
+    utmParameters.medium = "social";
+    utmParameters.content = "shared_link";
+    const utmString = generateUTM(utmParameters);
+    metaUrlWithUtm = addUTM(metaUrl, utmString);
+  }
 </script>
 
 <svelte:head>
