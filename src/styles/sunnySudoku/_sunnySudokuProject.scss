@@ -1,5 +1,5 @@
 .sunnySudokuProject {
-  @extend %project;
+  @extend %project !optional;
   color: #fff;
   background-image: url('/images/sunnySudoku/sunnySudokuBackground.webp'), linear-gradient(to right, #42ae6d, #9adf63);
   background-position: 50% 50%;
@@ -89,18 +89,5 @@
       min-width: 0;
       margin: 1.35em 0 0;
     }
-  }
-}
-
-.sunnySudokuPlay {
-  @extend %play;
-  background: #152338;
-
-  & %fullScreenToggle {
-    position: absolute;
-    top: 1em;
-    left: 50%;
-    margin: 0 0 0 (100vh * 0.2812);
-    transform: translateX(1em);
   }
 }

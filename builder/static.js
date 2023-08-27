@@ -5,6 +5,12 @@ import * as zlib from 'zlib';
 import * as sass from 'sass';
 import * as htmlMinifier from 'html-minifier';
 
+const CRP_STYLES = {
+  'index.html': 'stylesCRP-index.scss',
+  'play.html': 'stylesCRP-sunnySudokuPlay.scss',
+  'sunny-sudoku.html': 'stylesCRP-sunnySudokuProject.scss',
+};
+
 const GOOGLE_ADS = `
 <div class="adUnit">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4146222498178111" crossorigin="anonymous"></script>
@@ -21,6 +27,8 @@ const GOOGLE_ADS = `
 </div>
 `;
 
+let crp_styles_results = {};
+
 function removeAppFolder() {
   return new Promise((resolve, reject) => {
     rimraf('./build/_app', (err) => {
@@ -33,13 +41,13 @@ function removeAppFolder() {
   })
 }
 
-function buildSass() {
+function buildSassStyles() {
   return new Promise((resolve, reject) => {
     sass.render(
       {
         file: './src/styles/styles.scss',
         outFile: './build/styles.css',
-        outputStyle: 'compressed'
+        outputStyle: 'compressed',
       },
       (err, result) => {
         if (err) {
@@ -48,18 +56,61 @@ function buildSass() {
           if (!fs.existsSync('./build/css/')) {
             fs.mkdirSync('./build/css/', { recursive: true });
           }
-          const writeableStream = fs.createWriteStream('./build/css/styles.css');
+          const writeableStream = fs.createWriteStream(
+            './build/css/styles.css',
+          );
           writeableStream.write(result.css);
           resolve();
         }
-      }
+      },
+    );
+  });
+}
+
+function buildSassCRPStyles(fileName) {
+  const crpFileName = CRP_STYLES[fileName];
+  if (!crpFileName) {
+    return Promise.resolve();
+  }
+  return new Promise((resolve, reject) => {
+    sass.render(
+      {
+        file: `./src/styles/${crpFileName}`,
+        outputStyle: 'compressed',
+      },
+      (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          crp_styles_results[fileName] = result.css;
+          resolve();
+        }
+      },
     );
   })
+}
+
+function buildSass() {
+  return Promise.all([
+    buildSassStyles(),
+    ...Object.keys(CRP_STYLES).map(buildSassCRPStyles),
+  ]);
 }
 
 function processHTMLFiles() {
   const htmlFiles = findHTMLFiles('./build');
   return Promise.all(htmlFiles.map(processHTMLFile));
+}
+
+function processCRPStyles(fileName) {
+  if (!crp_styles_results[fileName]) {
+    return '';
+  }
+  return `<style>${crp_styles_results[fileName]}</style>`;
+}
+
+function generatePageCSS(fileName) {
+  return `${processCRPStyles(fileName)}<link rel="preload" href="/css/styles.css?v=${Date.now()}" as="style"><link rel="stylesheet" href="/css/styles.css?v=${Date.now()}" media="print" onload="this.media='all'">\n    <title>`;
 }
 
 function processHTMLFile(filePath) {
@@ -69,8 +120,9 @@ function processHTMLFile(filePath) {
         console.error(err);
         reject(err);
       } else {
+        const fileName = path.basename(filePath);
         let result = data.replace(/(?:<.*\/_app\/immutable.*?>)|(?:\sdata-svelte-h=".*?")|(?:<!-- HEAD_svelte.*? -->)|(?:<!-- .*? -->)|(?:<script>(?:\n|\t)*{(?:\n|\t)*__sveltekit_(?:.|\n|\t)*?<\/script>)/g, '');
-        result = result.replace(/<title>/g, `<link rel="preload" href="/css/styles.css?v=${Date.now()}" as="style"><link rel="stylesheet" href="/css/styles.css?v=${Date.now()}" media="print" onload="this.media='all'">\n    <title>`);
+        result = result.replace(/<title>/g, generatePageCSS(fileName));
         result = result.replace(/<a href="\/(.+?)"/g, '<a href="/$1.html"');
         result = result.replace(/<meta property="og:url" content="https:\/\/([a-zA-Z/.]*\/[a-zA-Z/-]+?)"/g, '<meta property="og:url" content="https://$1.html"');
         result = result.replace(/<meta name="twitter:site" content="https:\/\/([a-zA-Z/.]*\/[a-zA-Z/-]+?)"/g, '<meta name="twitter:site" content="https://$1.html"');
@@ -93,7 +145,7 @@ function processHTMLFile(filePath) {
           removeTagWhitespace: false,
           useShortDoctype: false
         });
-        if (shouldAddGoogleAds(filePath)) {
+        if (shouldAddGoogleAds(fileName)) {
           result = result.replace(/<\/body>/g, `${GOOGLE_ADS}</body>`);
         }
         fs.writeFile(filePath, result, 'utf8', (err) => {
@@ -108,9 +160,10 @@ function processHTMLFile(filePath) {
   });
 }
 
-function shouldAddGoogleAds(filePath) {
-  // const fileName = path.basename(filePath);
-  // return fileName === 'play.html';
+function shouldAddGoogleAds(fileName) {
+  if (fileName === 'play.html') {
+    return false;
+  }
   return false;
 }
 

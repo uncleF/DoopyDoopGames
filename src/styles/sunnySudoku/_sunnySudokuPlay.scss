@@ -1,0 +1,12 @@
+.sunnySudokuPlay {
+  @extend %play !optional;
+  background: #152338;
+
+  & %fullScreenToggle {
+    position: absolute;
+    top: 1em;
+    left: 50%;
+    margin: 0 0 0 (100vh * 0.2812);
+    transform: translateX(1em);
+  }
+}
