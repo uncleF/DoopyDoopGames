@@ -1,19 +1,15 @@
 <script lang="ts">
-  import { browser } from '$app/environment';
   import shared from 'data/shared.json'
-  import { toggleFullscreen, transformNameToClassNameComponent } from 'utilities/helpers';
+  import { transformNameToClassNameComponent } from 'utilities/helpers';
+  import FullscreenToggle from 'components/FullscreenToggle/FullscreenToggle.svelte';
+  import PlayPlatforms from 'components/PlayPlatforms/PlayPlatforms.svelte';
 
   export let slug: ProjectSlug
-  export let name: ProjectName;
+  export let project: ProjectData;
 
-  function onClick() {
-    toggleFullscreen();
-  }
-
+  const { name, platforms } = project;
   const src = `/${slug}/play/webgl/index_web.html`
   const className = `${transformNameToClassNameComponent(name)}Play`;
-  const isEnabled = browser && document.documentElement.requestFullscreen;
-  let isFullscreen = browser && document.fullscreenElement;
 </script>
 
 <section class={className}>
@@ -24,11 +20,10 @@
     class="playFrame"
     frameborder="0"
     allow="fullscreen"></iframe>
-  <button
-    on:click={onClick}
-    class="fullscreenToggle"
-    class:fullscreenToggle-is-on={isFullscreen}
-    class:fullscreenToggle-is-enabled={isEnabled}>
-      Toggle Fullscreen
-  </button>
+  <FullscreenToggle />
+  {#if platforms}
+    <PlayPlatforms
+      {name}
+      {platforms} />
+  {/if}
 </section>

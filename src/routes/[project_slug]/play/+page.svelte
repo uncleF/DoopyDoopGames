@@ -6,9 +6,8 @@
   export let data: PlayPageData;
 
   const { slug, project, meta, utm } = data;
-  const { name } = project;
   setContext('utm', utm);
 </script>
 
-<Play {slug} {name} />
+<Play {slug} {project} />
 <Meta data={meta} />

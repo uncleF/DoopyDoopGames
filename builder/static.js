@@ -70,11 +70,12 @@ function processHTMLFile(filePath) {
         reject(err);
       } else {
         let result = data.replace(/(?:<.*\/_app\/immutable.*?>)|(?:\sdata-svelte-h=".*?")|(?:<!-- HEAD_svelte.*? -->)|(?:<!-- .*? -->)|(?:<script>(?:\n|\t)*{(?:\n|\t)*__sveltekit_(?:.|\n|\t)*?<\/script>)/g, '');
-        result = result.replace(/<title>/g, `<link rel="stylesheet" href="/css/styles.css?v=${Date.now()}">\n    <title>`);
+        result = result.replace(/<title>/g, `<link rel="preload" href="/css/styles.css?v=${Date.now()}" as="style"><link rel="stylesheet" href="/css/styles.css?v=${Date.now()}" media="print" onload="this.media='all'">\n    <title>`);
         result = result.replace(/<a href="\/(.+?)"/g, '<a href="/$1.html"');
         result = result.replace(/<meta property="og:url" content="https:\/\/([a-zA-Z/.]*\/[a-zA-Z/-]+?)"/g, '<meta property="og:url" content="https://$1.html"');
         result = result.replace(/<meta name="twitter:site" content="https:\/\/([a-zA-Z/.]*\/[a-zA-Z/-]+?)"/g, '<meta name="twitter:site" content="https://$1.html"');
         result = result.replace(/<link rel="canonical" href="https:\/\/([a-zA-Z/.]*\/[a-zA-Z/-]+?)"/g, '<link rel="canonical" href="https://$1.html"');
+        result = result.replace(/<\/body>/g, `    <script async src="/js/scripts.js?v=${Date.now()}"></script>\n</body>`);
         result = htmlMinifier.minify(result, {
           caseSensitive: false,
           collapseBooleanAttributes: true,

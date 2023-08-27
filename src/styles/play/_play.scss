@@ -11,3 +11,17 @@
   height: 100%;
   width: 100vh * 0.5625;
 }
+
+.playPlatforms {
+  position: absolute;
+  right: 50%;
+  bottom: 1em;
+  left: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 1em;
+  margin: 0 (100vh * 0.2812) 0 0;
+  transform: translateX(-1em);
+}

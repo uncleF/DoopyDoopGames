@@ -15,20 +15,43 @@
   position: relative;
   display: block;
   overflow: hidden;
-  width: 282px;
-  height: 0;
+  width: 100%;
+  max-width: 282px;
   background-size: contain;
+  background-repeat: no-repeat;
+  font-size: 0;
+  text-indent: -10000px;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+  }
 
   &-appStore {
-    padding: 94px 0 0;
     background-image: url('/images/appStore.png');
     background-image: url('/images/appStore.webp');
+
+    &::after {
+      padding: 33.33% 0 0;
+    }
+
+    %device-android & {
+      display: none;
+    }
   }
 
   &-googlePlay {
-    padding: 84px 0 0;
     background-image: url('/images/googlePlay.png');
     background-image: url('/images/googlePlay.webp');
+
+    &::after {
+      padding: 30% 0 0;
+    }
+
+    %device-ios & {
+      display: none;
+    }
   }
 }
 
