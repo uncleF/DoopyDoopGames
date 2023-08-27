@@ -174,7 +174,7 @@ function findHTMLFiles(dirPath, arrayOfFiles) {
     const filePath = dirPath + '/' + file;
     if (fs.statSync(filePath).isDirectory()) {
       arrayOfFiles = findHTMLFiles(dirPath + '/' + file, arrayOfFiles);
-    } else if (path.extname(file) === '.html') {
+    } else if (path.extname(file) === '.html' && !dirPath.includes('play/webgl')) {
       arrayOfFiles.push(path.join(dirPath, '/', file));
     }
   });
